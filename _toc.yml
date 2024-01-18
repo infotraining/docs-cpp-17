@@ -1,4 +1,12 @@
 format: jb-book
 root: index
 chapters:
-- file: tdd
+- file: stdcpp17
+- file: basic-features
+- file: core-fixes
+- file: templates
+- file: fold-expressions
+- file: vocabulary-types
+- file: filesystem
+- file: parallel-stl
+- file: new-library-features
