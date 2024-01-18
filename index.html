@@ -174,27 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
-<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
-<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
 <li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
@@ -397,6 +380,7 @@ document.write(`
                   
   <section id="programowanie-w-c-17">
 <h1>Programowanie w C++17<a class="headerlink" href="#programowanie-w-c-17" title="Permalink to this heading">#</a></h1>
+<p>Materiały do szkolenia <a class="reference external" href="https://www.infotraining.pl/szkolenie/c-plus-plus/cpp17">Programowanie w C++17</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a><ul>
@@ -491,34 +475,56 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="string-view.html#roznice-miedzy-string-view-a-string">Różnice między string_view a string</a></li>
-<li class="toctree-l3"><a class="reference internal" href="string-view.html#konwersje-string-string-view">Konwersje string <code class="docutils literal notranslate"><span class="pre">&lt;-&gt;</span></code> string_view</a></li>
-<li class="toctree-l3"><a class="reference internal" href="string-view.html#uzycie-string-view-w-api-funkcji">Użycie string_view w API funkcji</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html#roznice-miedzy-string-view-a-string">Różnice między string_view a string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html#konwersje-string-string-view">Konwersje string <code class="docutils literal notranslate"><span class="pre">&lt;-&gt;</span></code> string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html#uzycie-string-view-w-api-funkcji">Użycie string_view w API funkcji</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="any.html#interfejs-klasy-std-any">Interfejs klasy std::any</a></li>
-<li class="toctree-l3"><a class="reference internal" href="any.html#stosowanie-std-any">Stosowanie std::any</a></li>
-<li class="toctree-l3"><a class="reference internal" href="any.html#kontenery-heterogeniczne-z-std-any">Kontenery heterogeniczne z std::any</a></li>
-<li class="toctree-l3"><a class="reference internal" href="any.html#obiekty-typu-std-any-w-algorytmach-standardowych">Obiekty typu std::any w algorytmach standardowych</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="any.html#interfejs-klasy-std-any">Interfejs klasy std::any</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="any.html#funkcje-zewnetrzne">Funkcje zewnętrzne</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="variant.html#stosowanie-std-variant">Stosowanie std::variant</a></li>
-<li class="toctree-l3"><a class="reference internal" href="variant.html#problem-pustego-stanu">Problem pustego stanu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="variant.html#wizytowanie-wariantow">Wizytowanie wariantów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html#stosowanie-std-any">Stosowanie std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html#kontenery-heterogeniczne-z-std-any">Kontenery heterogeniczne z std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html#obiekty-typu-std-any-w-algorytmach-standardowych">Obiekty typu std::any w algorytmach standardowych</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="optional.html#tag-pomocniczy-std-nullopt">Tag pomocniczy - std::nullopt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optional.html#konstruktory">Konstruktory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optional.html#sprawdzenie-stanu">Sprawdzenie stanu</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optional.html#dostep-do-przechowywanej-wartosci">Dostęp do przechowywanej wartości</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optional.html#semantyka-przenoszenia">Semantyka przenoszenia</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optional.html#specjalne-przypadki">Specjalne przypadki</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optional.html#case-study">Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optional.html#tag-pomocniczy-std-nullopt">Tag pomocniczy - std::nullopt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html#konstruktory">Konstruktory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html#sprawdzenie-stanu">Sprawdzenie stanu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html#dostep-do-przechowywanej-wartosci">Dostęp do przechowywanej wartości</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#unsafe">Unsafe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#safe">Safe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#resetowanie-stanu">Resetowanie stanu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html#semantyka-przenoszenia">Semantyka przenoszenia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html#specjalne-przypadki">Specjalne przypadki</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#std-optional-bool">std::optional&lt;bool&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#std-optional-t">std::optional&lt;T*&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html#case-study">Case Study</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#opcjonalne-skladowe-klasy">Opcjonalne składowe klasy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="variant.html#stosowanie-std-variant">Stosowanie std::variant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#konstrukcja-zmiennej-wariantowej">Konstrukcja zmiennej wariantowej</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#przypisania-wartosci-do-zmiennej-wariantowej">Przypisania wartości do zmiennej wariantowej</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#dostep-do-wartosci-przechowywanej-w-zmiennej-wariantowej">Dostęp do wartości przechowywanej w zmiennej wariantowej</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#inne-funkcje-api-dla-klasy-std-variant">Inne funkcje API dla klasy std::variant</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html#problem-pustego-stanu">Problem pustego stanu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html#wizytowanie-wariantow">Wizytowanie wariantów</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#klasa-wizytatora">Klasa wizytatora</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#wizytacja-za-pomoca-lambd">Wizytacja za pomocą lambd</a></li>
 </ul>
 </li>
 </ul>
@@ -578,8 +584,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-</div>
-<div class="toctree-wrapper compound">
 </div>
 </section>
 
