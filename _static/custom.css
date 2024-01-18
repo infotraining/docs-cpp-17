@@ -131,3 +131,13 @@ dt {
 {
   text-decoration: none !important;
 }
+
+.toc-entry a.nav-link:hover
+{
+  text-decoration: none !important;
+}
+
+a:hover 
+{
+  text-decoration-thickness: 2px;
+}
