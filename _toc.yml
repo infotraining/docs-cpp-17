@@ -1,15 +1,15 @@
 format: jb-book
 root: index
-chapters:
-- file: stdcpp17
-- file: basic-features
-- file: core-fixes
-- file: templates
-- file: fold-expressions
-- file: string-view
-- file: any
-- file: variant
-- file: optional
-- file: filesystem
-- file: parallel-stl
-- file: new-library-features
+# chapters:
+# - file: stdcpp17
+# - file: basic-features
+# - file: core-fixes
+# - file: templates
+# - file: fold-expressions
+# - file: string-view
+# - file: any
+# - file: variant
+# - file: optional
+# - file: filesystem
+# - file: parallel-stl
+# - file: new-library-features

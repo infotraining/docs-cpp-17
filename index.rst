@@ -1,10 +1,7 @@
-.. Python documentation master file, created by
-   sphinx-quickstart on Thu May 30 13:19:35 2013.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Programowanie w C++17
 =====================
+
+Materiały do szkolenia `Programowanie w C++17 <https://www.infotraining.pl/szkolenie/c-plus-plus/cpp17>`_.
 
 .. toctree::
    :maxdepth: 3
@@ -14,7 +11,10 @@ Programowanie w C++17
    core-fixes
    templates
    fold-expressions
-   vocabulary-types
+   string-view
+   any
+   optional
+   variant
    filesystem
    parallel-stl
    new-library-features
