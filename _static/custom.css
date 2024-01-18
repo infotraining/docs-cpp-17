@@ -126,3 +126,8 @@ dt {
 .h4 h4 {
   font-size: 1.2rem !important;
 }
+
+.navbar-nav li a:hover
+{
+  text-decoration: none !important;
+}
