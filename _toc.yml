@@ -6,7 +6,10 @@ chapters:
 - file: core-fixes
 - file: templates
 - file: fold-expressions
-- file: vocabulary-types
+- file: string-view
+- file: any
+- file: variant
+- file: optional
 - file: filesystem
 - file: parallel-stl
 - file: new-library-features

@@ -1,5 +1,5 @@
-Fold expressions w C++17
-========================
+Fold expressions
+================
 
 Wyrażenia *fold* w językach funkcjonalnych
 ------------------------------------------

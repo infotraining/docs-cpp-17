@@ -1,6 +1,6 @@
-*********************************
-Algorytmy współbieżne STL w C++17
-*********************************
+*************************
+Algorytmy współbieżne STL
+*************************
 
 W C++17 istnieje możliwość współbieżnego wykonania algorytmów STL.
 Bazą dla wprowadzenia współbieżności do STL był dokument *Parallel TS*.

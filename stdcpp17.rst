@@ -1,5 +1,5 @@
-Standard C++17
-==============
+C++17 - kompilatory
+===================
 
 C++17 to najnowszy opublikowany standard języka C++.
 

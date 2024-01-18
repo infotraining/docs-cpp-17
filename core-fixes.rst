@@ -1,5 +1,5 @@
-C++17 - poprawki standardu
-==========================
+Poprawki standardu (bugfixes)
+=============================
 
 Zdefiniowana kolejność ewaluacji wyrażeń
 ----------------------------------------

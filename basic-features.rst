@@ -1,5 +1,5 @@
-C++17 - nowe elementy języka
-============================
+Nowe elementy języka
+====================
 
 Structured bindings
 -------------------

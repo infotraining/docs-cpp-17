@@ -1,8 +1,8 @@
 Szablony w C++17
 ================
 
-Dedukcja argumentów szablonu dla klas
--------------------------------------
+Dedukcja argumentów szablonu dla klas (CTAD)
+--------------------------------------------
 
 C++17 wprowadza mechanizm dedukcji argumentów szablonu klasy (*Class Template Argument Deduction*). 
 Typy parametrów szablonu klasy mogą być dedukowane na podstawie argumentów przekazanych do konstruktora tworzonego obiektu.
