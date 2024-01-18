@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Poprawki standardu (bugfixes) &#8212; Book title</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'core-fixes';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Szablony w C++17" href="templates.html" />
+    <link rel="prev" title="Nowe elementy języka" href="basic-features.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Book title - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Book title - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Programowanie w C++17
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template/issues/new?title=Issue%20on%20page%20%2Fcore-fixes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/core-fixes.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Poprawki standardu (bugfixes)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zdefiniowana-kolejnosc-ewaluacji-wyrazen">Zdefiniowana kolejność ewaluacji wyrażeń</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reguly-ewaluacji-wyrazen-w-c-17">Reguły ewaluacji wyrażeń w C++17</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicjalizacja-typow-wyliczeniowych">Inicjalizacja typów wyliczeniowych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definiowanie-nowych-typow-calkowitych-za-pomoca-wyliczen">Definiowanie nowych typów całkowitych za pomocą wyliczeń</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicjalizacja-listowa-i-auto">Inicjalizacja listowa i auto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zalety-inicjalizacji-bezposredniej-z">Zalety inicjalizacji bezpośredniej z {}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noexcept-jako-czesc-typu-funkcji">noexcept jako część typu funkcji</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elementy-usuniete-ze-standardu">Elementy usunięte ze standardu</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="poprawki-standardu-bugfixes">
+<h1>Poprawki standardu (bugfixes)<a class="headerlink" href="#poprawki-standardu-bugfixes" title="Permalink to this heading">#</a></h1>
+<section id="zdefiniowana-kolejnosc-ewaluacji-wyrazen">
+<h2>Zdefiniowana kolejność ewaluacji wyrażeń<a class="headerlink" href="#zdefiniowana-kolejnosc-ewaluacji-wyrazen" title="Permalink to this heading">#</a></h2>
+<p>Kolejność ewaluacji wyrażeń dla wielu operatorów w C++ była niezdefiniowana w standardzie.
+W efekcie przewidzenie wyniku wykonania operacji korzystającej z takich operatorów było w zasadzie niemożliwe.</p>
+<p>Oto kilka przykładów:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dict</span><span class="p">;</span>
+<span class="n">dict</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dict</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="c1">// after statement: dict = { {0, 0} } or { { 0, 1} }</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;but I have heard it works even if you don’t believe in it&quot;</span><span class="p">;</span>
+<span class="n">s</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;even&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;only&quot;</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot; don’t&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;I have heard it works only if you believe in it&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// it may fail</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">f</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">g</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">h</span><span class="p">();</span><span class="w">  </span><span class="c1">// UB: undefined evaluation of order</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">.</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">f</span><span class="p">()).</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">g</span><span class="p">()).</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">h</span><span class="p">());</span>
+</pre></div>
+</div>
+<section id="reguly-ewaluacji-wyrazen-w-c-17">
+<h3>Reguły ewaluacji wyrażeń w C++17<a class="headerlink" href="#reguly-ewaluacji-wyrazen-w-c-17" title="Permalink to this heading">#</a></h3>
+<p>C++17 definiuje następujące reguły ewaluacji:</p>
+<ul class="simple">
+<li><p>Wyrażenia postfix są ewaluowane od lewej do prawej. Dotyczy to również wywołań funkcji i wyrażeń związanych z wyborem składowej klasy (struktury).</p></li>
+<li><p>Wyrażenia przypisania są ewaluowane od prawej do lewej.</p></li>
+<li><p>Operandy dla operatorów przesunięć są ewaluowane od lewej do prawej.</p></li>
+</ul>
+<p>W rezultacie następujące wyrażenia są ewaluowane w kolejności <strong>a</strong>, potem <strong>b</strong>, potem <strong>c</strong> a następnie <strong>d</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a.b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a-&gt;b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a-&gt;*b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a(b1,</span> <span class="pre">b2,</span> <span class="pre">b3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&#64;=</span> <span class="pre">a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a[b]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;&lt;</span> <span class="pre">b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;&gt;</span> <span class="pre">b</span></code></p></li>
+</ul>
+<p>Dodatkowo wprowadzono regułę, że kolejność ewaluacji wyrażeń zawierających przeciążone operatory jest określona tak jak w przypadku
+odpowiednich operatorów wbudowanych, a nie przez reguły związane z wywołaniami funkcji.</p>
+<p>W rezultacie wyrażenie:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1-st</span>
+<span class="w"> </span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;even&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;only&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2nd</span>
+<span class="w"> </span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot; don’t&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 3rd</span>
+</pre></div>
+</div>
+<p>jest ewaluowane w określony sposób, ale kolejność ewaluacji argumentów wywołań metody <code class="docutils literal notranslate"><span class="pre">replace()</span></code> wciąż nie jest specyfikowana przez standard.</p>
+</section>
+</section>
+<section id="inicjalizacja-typow-wyliczeniowych">
+<h2>Inicjalizacja typów wyliczeniowych<a class="headerlink" href="#inicjalizacja-typow-wyliczeniowych" title="Permalink to this heading">#</a></h2>
+<p>Dla typów wyliczeniowych z określonym typem całkowitym (<em>fixed underlying type</em>) standard C++17 dopuszcza
+bezpośrednią inicjalizację listową (<em>direct list initialization</em>) wartością całkowitą. Dotyczy to zarówno klasycznych wyliczeń <code class="docutils literal notranslate"><span class="pre">enum</span></code>, jak i
+wprowadzonych w C++11 wyliczeń <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">class</span></code>.</p>
+<p>Dla klasycznych typów wyliczeniowych <code class="docutils literal notranslate"><span class="pre">enum</span></code> bez określonego typu całkowitego taka inicjalizacja wciąż jest traktowana jako błąd kompilacji.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Coffee</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">espresso</span><span class="p">,</span><span class="w"> </span><span class="n">cappucino</span><span class="p">,</span><span class="w"> </span><span class="n">dopio</span><span class="w"> </span><span class="p">};</span>
+
+<span class="n">Coffee</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR (all versions)</span>
+<span class="n">Coffee</span><span class="w"> </span><span class="nf">c2</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// ERROR (all versions)</span>
+<span class="n">Coffee</span><span class="w"> </span><span class="n">c3</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w">  </span><span class="c1">// OK since C++17</span>
+
+
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GuitarType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stratocaster</span><span class="p">,</span><span class="w"> </span><span class="n">les_paul</span><span class="w"> </span><span class="p">};</span>
+
+<span class="n">GuitarType</span><span class="w"> </span><span class="n">gt1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR (all versions)</span>
+<span class="n">GuitarType</span><span class="w"> </span><span class="nf">gt2</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// ERROR (all versions)</span>
+<span class="n">GuitarType</span><span class="w"> </span><span class="n">gt3</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK since C++17</span>
+
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">EngineType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">diesel</span><span class="p">,</span><span class="w"> </span><span class="n">petrol</span><span class="p">,</span><span class="w"> </span><span class="n">wankel</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// EngineType e1 = 0; // ERROR (all versions)</span>
+<span class="c1">// EngineType e2(0); // ERROR (all versions)</span>
+<span class="c1">// EngineType e3{2}; // ERROR (all versions)</span>
+
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">MovieFormat</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">divx</span><span class="p">,</span><span class="w"> </span><span class="n">mpeg</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// MovieFormat mv1 = 1; // ERROR (all versions)</span>
+<span class="c1">// MovieFormat mv2(1); // ERROR (all versions)</span>
+<span class="n">MovieFormat</span><span class="w"> </span><span class="n">mv3</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK since C++17</span>
+</pre></div>
+</div>
+</section>
+<section id="definiowanie-nowych-typow-calkowitych-za-pomoca-wyliczen">
+<h2>Definiowanie nowych typów całkowitych za pomocą wyliczeń<a class="headerlink" href="#definiowanie-nowych-typow-calkowitych-za-pomoca-wyliczen" title="Permalink to this heading">#</a></h2>
+<p>W C++17 można użyć typu wyliczeniowego do zdefiniowania nowego typu całkowitego niepodlegającego niejawnym konwersjom.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">length_t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// new distinct integral type with some restrictions</span>
+
+<span class="n">length_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="n">length_t</span><span class="w"> </span><span class="nf">x1</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="n">length_t</span><span class="w"> </span><span class="n">x2</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="n">length_t</span><span class="w"> </span><span class="n">x3</span><span class="p">{</span><span class="mi">-19</span><span class="p">};</span><span class="w"> </span><span class="c1">// ERROR (narrowing)</span>
+<span class="n">length_t</span><span class="w"> </span><span class="n">x4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">665</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="n">length_t</span><span class="w"> </span><span class="n">x5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length_t</span><span class="p">(</span><span class="mi">665</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="n">length_t</span><span class="w"> </span><span class="n">x6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">length_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">665</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length_t</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">x2</span><span class="p">)</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK for enum but ERROR for enum class</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK for enum but ERROR for enum class</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK for enum but ERROR for enum class</span>
+<span class="w">    </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="inicjalizacja-listowa-i-auto">
+<h2>Inicjalizacja listowa i auto<a class="headerlink" href="#inicjalizacja-listowa-i-auto" title="Permalink to this heading">#</a></h2>
+<p>W C++17 zmieniona została reguła dotycząca automatycznej detekcji typu w przypadku inicjalizacji bezpośredniej za pomocą inicjalizacji listowej.</p>
+<p>W C++11/14:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">x1</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w"> </span><span class="c1">// direct initialization with C++98/03 syntax</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span><span class="w"> </span><span class="c1">// direct initialization with C++11</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">665</span><span class="p">;</span><span class="w"> </span><span class="c1">// copy initialization</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">a1</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w"> </span><span class="c1">// direct initialization -&gt; int</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a2</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span><span class="w"> </span><span class="c1">// direct initialization -&gt; initializer_list&lt;int&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a3</span><span class="p">{</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">665</span><span class="p">};</span><span class="w"> </span><span class="c1">// direct initialization -&gt; initializer_list&lt;int&gt;</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">a4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"> </span><span class="c1">// copy initialization -&gt; int</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">42</span><span class="p">};</span><span class="w"> </span><span class="c1">// copy initialization -&gt; initializer_list&lt;int&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">665</span><span class="p">};</span><span class="w"> </span><span class="c1">// copy initialization -&gt; initializer_list&lt;int&gt;</span>
+</pre></div>
+</div>
+<p>Po zmianie reguły w C++17:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">a1</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w"> </span><span class="c1">// direct initialization -&gt; int</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a2</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span><span class="w"> </span><span class="c1">// direct initialization -&gt; int (new rule!!!)</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a3</span><span class="p">{</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">665</span><span class="p">};</span><span class="w"> </span><span class="c1">// ERROR</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">a4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"> </span><span class="c1">// copy initialization -&gt; int</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">42</span><span class="p">};</span><span class="w"> </span><span class="c1">// copy initialization -&gt; initializer_list&lt;int&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">665</span><span class="p">};</span><span class="w"> </span><span class="c1">// copy initialization -&gt; initializer_list&lt;int&gt;</span>
+</pre></div>
+</div>
+<section id="zalety-inicjalizacji-bezposredniej-z">
+<h3>Zalety inicjalizacji bezpośredniej z {}<a class="headerlink" href="#zalety-inicjalizacji-bezposredniej-z" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>działa z każdym typem</p>
+<ul>
+<li><p>również z typami wyliczeniowymi</p></li>
+<li><p>również z agregatami posiadającymi klasy bazowe</p></li>
+</ul>
+</li>
+<li><p>wykrywane są konwersje zawężające (inicjalizacja zmiennej <code class="docutils literal notranslate"><span class="pre">int</span></code> wartością typu <code class="docutils literal notranslate"><span class="pre">float</span></code>)</p></li>
+<li><p>bezpośrednia inicjalizacja w połączeniu z mechanizmem <code class="docutils literal notranslate"><span class="pre">auto</span></code> działa prawidłowo od C++17</p></li>
+</ul>
+</section>
+</section>
+<section id="noexcept-jako-czesc-typu-funkcji">
+<h2>noexcept jako część typu funkcji<a class="headerlink" href="#noexcept-jako-czesc-typu-funkcji" title="Permalink to this heading">#</a></h2>
+<p>System typów w C++17 uwzględnia specyfikację <code class="docutils literal notranslate"><span class="pre">noexcept</span></code> dla funkcji.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">func1</span><span class="p">();</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">func2</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="p">;</span>
+
+<span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">func1</span><span class="p">),</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">func2</span><span class="p">)</span><span class="o">&gt;</span><span class="p">);</span><span class="w"> </span><span class="c1">// ERROR - different types</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)()</span><span class="w"> </span><span class="k">noexcept</span><span class="p">;</span>
+
+<span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func2</span><span class="p">();</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func1</span><span class="p">();</span><span class="w"> </span><span class="c1">// ERROR since C++17</span>
+</pre></div>
+</div>
+<p>Zmiana ta może spowodować, że kod z C++14 może się nie skompilować w C++17:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">call</span><span class="p">(</span><span class="n">F</span><span class="w"> </span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">f2</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">f1</span><span class="p">();</span>
+<span class="w">    </span><span class="n">f2</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">call</span><span class="p">(</span><span class="n">func1</span><span class="p">,</span><span class="w"> </span><span class="n">func2</span><span class="p">);</span><span class="w"> </span><span class="c1">// ERROR since C++17</span>
+</pre></div>
+</div>
+</section>
+<section id="elementy-usuniete-ze-standardu">
+<h2>Elementy usunięte ze standardu<a class="headerlink" href="#elementy-usuniete-ze-standardu" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Trigrafy</p></li>
+<li><p>Operator ++ dla typu <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p>Słowo kluczowe <code class="docutils literal notranslate"><span class="pre">register</span></code></p></li>
+<li><p>Specyfikacja rzucanych wyjątków z listą typów</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="k">throw</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">);</span><span class="w"> </span><span class="c1">// invalid since C++17</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"> </span><span class="k">throw</span><span class="p">();</span><span class="w"> </span><span class="c1">// OK - but no stack unwinding guarantee</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="basic-features.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Nowe elementy języka</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="templates.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Szablony w C++17</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zdefiniowana-kolejnosc-ewaluacji-wyrazen">Zdefiniowana kolejność ewaluacji wyrażeń</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reguly-ewaluacji-wyrazen-w-c-17">Reguły ewaluacji wyrażeń w C++17</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicjalizacja-typow-wyliczeniowych">Inicjalizacja typów wyliczeniowych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definiowanie-nowych-typow-calkowitych-za-pomoca-wyliczen">Definiowanie nowych typów całkowitych za pomocą wyliczeń</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicjalizacja-listowa-i-auto">Inicjalizacja listowa i auto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zalety-inicjalizacji-bezposredniej-z">Zalety inicjalizacji bezpośredniej z {}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noexcept-jako-czesc-typu-funkcji">noexcept jako część typu funkcji</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elementy-usuniete-ze-standardu">Elementy usunięte ze standardu</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś - Infotraining
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,917 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Algorytmy współbieżne STL &#8212; Book title</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parallel-stl';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Nowe elementy biblioteki standardowej" href="new-library-features.html" />
+    <link rel="prev" title="Biblioteka Filesystem" href="filesystem.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Book title - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Book title - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Programowanie w C++17
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template/issues/new?title=Issue%20on%20page%20%2Fparallel-stl.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/parallel-stl.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Algorytmy współbieżne STL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lista-algorytmow-wspolbieznych">Lista algorytmów współbieżnych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcje-dostepu-do-danych">Funkcje dostępu do danych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wytyczne-wykonania-algorytmow-wspolbieznych">Wytyczne wykonania algorytmów współbieżnych</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-execution-sequenced-policy-obiekt-std-execution-seq">std::execution::sequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::seq</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-execution-parallel-policy-obiekt-std-execution-par">std::execution::parallel_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-execution-parallel-unsequenced-policy-obiekt-std-execution-par-unseq">std::execution::parallel_unsequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par_unseq</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wyjatki-w-algorytmach-wspolbieznych">Wyjątki w algorytmach współbieżnych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-algorytmy-wspolbiezne">Nowe algorytmy współbieżne</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-reduce">std::reduce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-transform-reduce">std::transform_reduce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-exclusive-scan">std::exclusive_scan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-inclusive-scan">std::inclusive_scan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-transform-inclusive-scan-oraz-transform-exclusive-scan">std::transform_inclusive_scan oraz transform_exclusive_scan</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="algorytmy-wspolbiezne-stl">
+<h1>Algorytmy współbieżne STL<a class="headerlink" href="#algorytmy-wspolbiezne-stl" title="Permalink to this heading">#</a></h1>
+<p>W C++17 istnieje możliwość współbieżnego wykonania algorytmów STL.
+Bazą dla wprowadzenia współbieżności do STL był dokument <em>Parallel TS</em>.</p>
+<p>Implementacja algorytmów współbieżnych w GCC 9 wykorzystuje bibliotekę <em>Thread Building Blocks</em> firmy Intel.</p>
+<p>Szczegółowy opis instalacji biblioteki TBB dla potrzeb <em>Parallel STL</em> w GCC 9 znajduje się
+na <a class="reference external" href="https://solarianprogrammer.com/2019/05/09/cpp-17-stl-parallel-algorithms-gcc-intel-tbb-linux-macos">stronie</a>.</p>
+<section id="lista-algorytmow-wspolbieznych">
+<h2>Lista algorytmów współbieżnych<a class="headerlink" href="#lista-algorytmow-wspolbieznych" title="Permalink to this heading">#</a></h2>
+<p>Większość algorytmów STL posiada w C++17 wersje współbieżne:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p>adjacent_difference</p></td>
+<td><p>inplace_merge</p></td>
+<td><p>replace_copy</p></td>
+</tr>
+<tr class="row-even"><td><p>adjacent_find</p></td>
+<td><p>is_heap</p></td>
+<td><p>replace_copy_if</p></td>
+</tr>
+<tr class="row-odd"><td><p>all_of</p></td>
+<td><p>is_heap_until</p></td>
+<td><p>replace_if</p></td>
+</tr>
+<tr class="row-even"><td><p>any_of</p></td>
+<td><p>is_partitioned</p></td>
+<td><p>reverse</p></td>
+</tr>
+<tr class="row-odd"><td><p>copy</p></td>
+<td><p>is_sorted</p></td>
+<td><p>reverse_copy</p></td>
+</tr>
+<tr class="row-even"><td><p>copy_if</p></td>
+<td><p>is_sorted</p></td>
+<td><p>rotate</p></td>
+</tr>
+<tr class="row-odd"><td><p>copy_n</p></td>
+<td><p>is_sorted_until</p></td>
+<td><p>rotate_copy</p></td>
+</tr>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>lexicographical_compare</p></td>
+<td><p>search</p></td>
+</tr>
+<tr class="row-odd"><td><p>count_if</p></td>
+<td><p>max_element</p></td>
+<td><p>search_n</p></td>
+</tr>
+<tr class="row-even"><td><p>equal</p></td>
+<td><p>merge</p></td>
+<td><p>set_difference</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exclusive_scan</strong></p></td>
+<td><p>min_element</p></td>
+<td><p>set_intersection</p></td>
+</tr>
+<tr class="row-even"><td><p>fill</p></td>
+<td><p>minmax_element</p></td>
+<td><p>set_symmetric_difference</p></td>
+</tr>
+<tr class="row-odd"><td><p>fill_n</p></td>
+<td><p>mismatch</p></td>
+<td><p>set_union</p></td>
+</tr>
+<tr class="row-even"><td><p>find</p></td>
+<td><p>move</p></td>
+<td><p>sort</p></td>
+</tr>
+<tr class="row-odd"><td><p>find_end</p></td>
+<td><p>none_of</p></td>
+<td><p>stable_partition</p></td>
+</tr>
+<tr class="row-even"><td><p>find_first_of</p></td>
+<td><p>nth_element</p></td>
+<td><p>stable_sort</p></td>
+</tr>
+<tr class="row-odd"><td><p>find_if</p></td>
+<td><p>partial_sort</p></td>
+<td><p>swap_ranges</p></td>
+</tr>
+<tr class="row-even"><td><p>find_if_not</p></td>
+<td><p>partial_sort_copy</p></td>
+<td><p>transform</p></td>
+</tr>
+<tr class="row-odd"><td><p>for_each</p></td>
+<td><p>partition</p></td>
+<td><p><strong>transform_exclusive_scan</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>for_each_n</strong></p></td>
+<td><p>partition_copy</p></td>
+<td><p><strong>transform_inclusive_scan</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>generate</p></td>
+<td><p><strong>reduce</strong></p></td>
+<td><p><strong>transform_reduce</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>generate_n</p></td>
+<td><p>remove</p></td>
+<td><p>uninitialized_copy</p></td>
+</tr>
+<tr class="row-odd"><td><p>includes</p></td>
+<td><p>remove_copy</p></td>
+<td><p>uninitialized_copy_n</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>inclusive_scan</strong></p></td>
+<td><p>remove_copy_if</p></td>
+<td><p>uninitialized_fill</p></td>
+</tr>
+<tr class="row-odd"><td><p>inner_product</p></td>
+<td><p>remove_if</p></td>
+<td><p>uninitialized_fill_n</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>replace</p></td>
+<td><p>unique</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td><p>unique_copy</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="funkcje-dostepu-do-danych">
+<h2>Funkcje dostępu do danych<a class="headerlink" href="#funkcje-dostepu-do-danych" title="Permalink to this heading">#</a></h2>
+<p>Algorytmy współbieżne korzystają z tzw. funkcji dostępu do danych (<em>element access functions</em>). Należą do nich:</p>
+<ul class="simple">
+<li><p>wszystkie operacje danej kategorii iteratora przekazanego przy wywołaniu algorytmu</p></li>
+<li><p>operacje wykonywane na elementach wymagane przez specyfikację algorytmu</p></li>
+<li><p>obiekty funkcyjne przekazane przez użytkownika oraz operacje na tych obiektach wymagane przez specyfikację</p></li>
+</ul>
+<p>Na przykład algorytm <code class="docutils literal notranslate"><span class="pre">sort()</span></code>:</p>
+<ul class="simple">
+<li><p>wykorzystuje operacje iteratora o dostępie swobodnym</p></li>
+<li><p>wywołuje funkcję <code class="docutils literal notranslate"><span class="pre">swap()</span></code> na elementach sekwencji</p></li>
+<li><p>wywołuje funktor <code class="docutils literal notranslate"><span class="pre">Compare</span></code> przekazany przez użytkownika</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Funkcje lub obiekty funkcyjne przekazane do algorytmu współbieżnego nie powinny
+bezpośrednio lub pośrednio modyfikować wartości obiektów przekazanych do nich jako argumenty.</p>
+</div>
+</section>
+<section id="wytyczne-wykonania-algorytmow-wspolbieznych">
+<h2>Wytyczne wykonania algorytmów współbieżnych<a class="headerlink" href="#wytyczne-wykonania-algorytmow-wspolbieznych" title="Permalink to this heading">#</a></h2>
+<p>Dla nowych wersji algorytmów standardowych przyjęto rozwiązanie polegające na tym, że żądanie wykonania algorytmu
+we współbieżny lub sekwencyjny sposób jest realizowane poprzez przekazanie jako pierwszego argumentu wywołania funkcji
+tzw. wytycznej wykonania (<em>execution policy</em>).</p>
+<p>Standard definiuje trzy podstawowe typy wytycznych:</p>
+<section id="std-execution-sequenced-policy-obiekt-std-execution-seq">
+<h3>std::execution::sequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::seq</span></code><a class="headerlink" href="#std-execution-sequenced-policy-obiekt-std-execution-seq" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Jeden wątek (ten, w którym został wywołany algorytm) <strong>wykonuje wszystkie zadania sekwencyjnie w pewnej kolejności, która nie jest ściśle zdefiniowana i może być z każdym wywołaniem inna</strong>.
+W szczególności, <strong>nie ma gwarancji, że kolejność wykonywania operacji będzie taka sama jak w wersji algorytmu bez wytycznej</strong>.</p></li>
+</ul>
+<p>W poniższym przykładzie wektor <code class="docutils literal notranslate"><span class="pre">v</span></code> zostanie zapełniony liczbami z przedziału 1-1000, ale w nieokreślonej kolejności:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">execution</span><span class="o">::</span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// not a race because of std::execution::seq</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Tryb wykonania przydatny przy debugowaniu i w testach</p></li>
+<li><p>Brak współbieżności wykonania - nie ma konieczności synchronizacji dostępu do współdzielonych danych</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">execution</span><span class="o">::</span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">dest</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">[</span><span class="o">&amp;</span><span class="n">log_file</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">log_file</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// concurrent access would be a race</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="std-execution-parallel-policy-obiekt-std-execution-par">
+<h3>std::execution::parallel_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par</span></code><a class="headerlink" href="#std-execution-parallel-policy-obiekt-std-execution-par" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wiele wątków może wykonywać współbieżnie zadania (multithreading)</strong></p></li>
+<li><p><strong>Zadania w obrębie swojego wątku roboczego są wykonywane sekwencyjnie w zadanej (lecz nieokreślonej) kolejności, bez przeplotu</strong> (<em>not-interleaved</em>)
+=&gt; wszystkie zadania muszą być <em>thread safe</em></p></li>
+<li><p>Istnieje możliwość użycia konstrukcji synchronizujących współbieżny dostęp do danych (np. <code class="docutils literal notranslate"><span class="pre">std::mutex</span></code>, <code class="docutils literal notranslate"><span class="pre">std::atomic&lt;T&gt;</span></code>)</p></li>
+</ul>
+<p>Wcześniejsze przykłady wywołania algorytmu, przy zastosowaniu wytycznej <code class="docutils literal notranslate"><span class="pre">std::execution::par</span></code> doprowadziłyby do wyścigu. Aby
+nie dopuścić do niezdefiniowanego zachowania programu (<em>UB</em>) musimy zsynchronizować dostęp do współdzielonych zasobów:</p>
+<ul>
+<li><p>stosując zmienną typu atomowego</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">count</span><span class="p">{};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">execution</span><span class="o">::</span><span class="n">par</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// must be atomic when std::execution::par</span>
+</pre></div>
+</div>
+</li>
+<li><p>stosując muteks</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">execution</span><span class="o">::</span><span class="n">par</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">dest</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">[</span><span class="o">&amp;</span><span class="n">log_file</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="w"> </span><span class="n">lk</span><span class="p">{</span><span class="n">log_file_mutex</span><span class="p">};</span>
+<span class="w">                        </span><span class="n">log_file</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// now concurrent access is synchronized</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="std-execution-parallel-unsequenced-policy-obiekt-std-execution-par-unseq">
+<h3>std::execution::parallel_unsequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par_unseq</span></code><a class="headerlink" href="#std-execution-parallel-unsequenced-policy-obiekt-std-execution-par-unseq" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Zadania mogą być wykonywane z wykorzystaniem wielowątkowości</strong> (<em>multithreading</em>) <strong>i współbieżności wektorowej</strong> (np. OpenMP)</p></li>
+<li><p>Zadania mogą być:</p>
+<ul>
+<li><p><strong>wykonywane w różnej kolejności w różnych wątkach</strong></p></li>
+<li><p><strong>przemieszane</strong> (<em>interleaved</em>) w ramach konkretnego wątku (np. druga operacja zostanie</p></li>
+<li><p><strong>transferowane między wątkami</strong> (zadanie rozpoczęte w wątku nr 1, może kontynuować pracę w wątku nr 2 i zakończyć działanie w wątku nr 3)
+rozpoczęta zanim pierwsza zostanie ukończona).</p></li>
+</ul>
+</li>
+<li><p>W rezultacie:</p>
+<ul>
+<li><p>wywołania operacji synchronizujących (np. <code class="docutils literal notranslate"><span class="pre">mutex::lock()</span></code>) grożą zakleszczeniem</p></li>
+<li><p>nie można używać dynamicznej alokacji i dealokacji pamięci</p></li>
+<li><p>operacje (funkcje) wykonywane przez algorytm muszą operować tylko na zadanym elemencie kolekcji i nie mogą modyfikować jakiegokolwiek
+współdzielonego stanu pomiędzy wątkami lub elementami sekwencji</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">execution</span><span class="o">::</span><span class="n">par_unseq</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">a</span><span class="p">),</span>
+<span class="w">            </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="w"> </span><span class="nf">lk</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="w"> </span><span class="c1">// Error: lock_guard constructor calls m.lock()</span>
+<span class="w">                </span><span class="o">++</span><span class="n">x</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">execution</span><span class="o">::</span><span class="n">par_unseq</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">dest</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK - no access to a shared state</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="wyjatki-w-algorytmach-wspolbieznych">
+<h2>Wyjątki w algorytmach współbieżnych<a class="headerlink" href="#wyjatki-w-algorytmach-wspolbieznych" title="Permalink to this heading">#</a></h2>
+<p>Jeśli jakikolwiek wyjątek wydostanie się z algorytmu współbieżnego, wywołana zostanie funkcja <code class="docutils literal notranslate"><span class="pre">terminate()</span></code>.</p>
+</section>
+<section id="nowe-algorytmy-wspolbiezne">
+<h2>Nowe algorytmy współbieżne<a class="headerlink" href="#nowe-algorytmy-wspolbiezne" title="Permalink to this heading">#</a></h2>
+<section id="std-reduce">
+<h3>std::reduce<a class="headerlink" href="#std-reduce" title="Permalink to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv46reduceRR15ExecutionPolicy5FwdIt5FwdIt1T">
+<span id="_CPPv36reduceRR15ExecutionPolicy5FwdIt5FwdIt1T"></span><span id="_CPPv26reduceRR15ExecutionPolicy5FwdIt5FwdIt1T"></span><span id="reduce__ExecutionPolicyRR.FwdIt.FwdIt.T"></span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reduce</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv46reduceRR15ExecutionPolicy5FwdIt5FwdIt1T" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv46reduceRR15ExecutionPolicy5FwdIt5FwdIt">
+<span id="_CPPv36reduceRR15ExecutionPolicy5FwdIt5FwdIt"></span><span id="_CPPv26reduceRR15ExecutionPolicy5FwdIt5FwdIt"></span><span id="reduce__ExecutionPolicyRR.FwdIt.FwdIt"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator_traits</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">FwdIt</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">value_type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reduce</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv46reduceRR15ExecutionPolicy5FwdIt5FwdIt" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv46reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp">
+<span id="_CPPv36reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp"></span><span id="_CPPv26reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp"></span><span id="reduce__ExecutionPolicyRR.FwdIt.FwdIt.T.BinaryOp"></span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reduce</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span>, <span class="n"><span class="pre">BinaryOp</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">binary_op</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv46reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Działa jak algorytm <code class="docutils literal notranslate"><span class="pre">std::accumulate()</span></code>, ale aplikuje funktor <code class="docutils literal notranslate"><span class="pre">binary_op</span></code> w nieokreślonej kolejności. Domyślnym funktorem jest <code class="docutils literal notranslate"><span class="pre">std::plus&lt;&gt;</span></code>.</p>
+<ul class="simple">
+<li><p>rezultat w przypadku przekazania funktora, który nie jest przechodni i komutatywny, jest nieokreślony</p>
+<ul>
+<li><p>np: dodawanie zmiennych typu <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="mi">1000665</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">iota</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">reduce</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">execution</span><span class="o">::</span><span class="n">par_unseq</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="std-transform-reduce">
+<h3>std::transform_reduce<a class="headerlink" href="#std-transform-reduce" title="Permalink to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T">
+<span id="_CPPv316transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T"></span><span id="_CPPv216transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T"></span><span id="transform_reduce__ExecutionPolicyRR.FwdIt1.FwdIt1.FwdIt2.T"></span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transform_reduce</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first1</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last1</span></span>, <span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first2</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv416transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T9BinaryOp19BinaryOp2">
+<span id="_CPPv316transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T9BinaryOp19BinaryOp2"></span><span id="_CPPv216transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T9BinaryOp19BinaryOp2"></span><span id="transform_reduce__ExecutionPolicyRR.FwdIt1.FwdIt1.FwdIt2.T.BinaryOp1.BinaryOp2"></span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transform_reduce</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first1</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last1</span></span>, <span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first2</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span>, <span class="n"><span class="pre">BinaryOp1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">binary_op1</span></span>, <span class="n"><span class="pre">BinaryOp2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">binary_op2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416transform_reduceRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T9BinaryOp19BinaryOp2" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv416transform_reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp7UnaryOp">
+<span id="_CPPv316transform_reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp7UnaryOp"></span><span id="_CPPv216transform_reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp7UnaryOp"></span><span id="transform_reduce__ExecutionPolicyRR.FwdIt.FwdIt.T.BinaryOp.UnaryOp"></span><span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transform_reduce</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span>, <span class="n"><span class="pre">BinaryOp</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">binary_op</span></span>, <span class="n"><span class="pre">UnaryOp</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">unary_op</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416transform_reduceRR15ExecutionPolicy5FwdIt5FwdIt1T8BinaryOp7UnaryOp" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Aplikuje transformację funktorem <code class="docutils literal notranslate"><span class="pre">binary_op2()</span></code> lub <code class="docutils literal notranslate"><span class="pre">unary_op()</span></code>, a następnie redukuje wyniki transformacji
+funktorem <code class="docutils literal notranslate"><span class="pre">binary_op1</span></code>.</p>
+<p>Domyślnymi funktorami są odpowiednio: <code class="docutils literal notranslate"><span class="pre">std::multiplies&lt;&gt;</span></code> i <code class="docutils literal notranslate"><span class="pre">std::plus&lt;&gt;</span></code>.</p>
+<p>Przykład policzenie słów w plikach z rozszerzeniem cpp.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ExecutionPolicy</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">uintmax_t</span><span class="w"> </span><span class="n">count_words</span><span class="p">(</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionPolicy</span><span class="w"> </span><span class="n">execution_policy</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">is_word_beginning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">isspace</span><span class="p">(</span><span class="n">left</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isspace</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uintmax_t</span><span class="w"> </span><span class="n">wc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isspace</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">front</span><span class="p">())</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">wc</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">transform_reduce</span><span class="p">(</span><span class="n">execution_policy</span><span class="p">,</span>
+<span class="w">        </span><span class="n">text</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">text</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="n">text</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">plus</span><span class="o">&lt;&gt;</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">is_word_beginning</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">wc</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="std-exclusive-scan">
+<h3>std::exclusive_scan<a class="headerlink" href="#std-exclusive-scan" title="Permalink to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T">
+<span id="_CPPv314exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T"></span><span id="_CPPv214exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T"></span><span id="exclusive_scan__ExecutionPolicyRR.FwdIt1.FwdIt1.FwdIt2.T"></span><span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">exclusive_scan</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">d_first</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv414exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation">
+<span id="_CPPv314exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation"></span><span id="_CPPv214exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation"></span><span id="exclusive_scan__ExecutionPolicyRR.FwdIt1.FwdIt1.FwdIt2.T.BinaryOperation"></span><span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">exclusive_scan</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">d_first</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span>, <span class="n"><span class="pre">BinaryOperation</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">binary_op</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414exclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Oblicza sumę poprzedzającą używając funktora <code class="docutils literal notranslate"><span class="pre">binary_op()</span></code> (używając wartości początkowej <code class="docutils literal notranslate"><span class="pre">init</span></code>) i
+zapisuje wyniki do sekwencji wskazywanej iteratorem <code class="docutils literal notranslate"><span class="pre">d_first</span></code>.</p>
+<p>Przedrostek <em>exlusive</em> oznacza, że i-ty element nie jest uwzględniany w i-tej sumie.</p>
+</section>
+<section id="std-inclusive-scan">
+<h3>std::inclusive_scan<a class="headerlink" href="#std-inclusive-scan" title="Permalink to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T">
+<span id="_CPPv314inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T"></span><span id="_CPPv214inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T"></span><span id="inclusive_scan__ExecutionPolicyRR.FwdIt1.FwdIt1.FwdIt2.T"></span><span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inclusive_scan</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">d_first</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation">
+<span id="_CPPv314inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation"></span><span id="_CPPv214inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation"></span><span id="inclusive_scan__ExecutionPolicyRR.FwdIt1.FwdIt1.FwdIt2.T.BinaryOperation"></span><span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inclusive_scan</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ExecutionPolicy</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">policy</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">first</span></span>, <span class="n"><span class="pre">FwdIt1</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">last</span></span>, <span class="n"><span class="pre">FwdIt2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">d_first</span></span>, <span class="n"><span class="pre">T</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">init</span></span>, <span class="n"><span class="pre">BinaryOperation</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">binary_op</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414inclusive_scanRR15ExecutionPolicy6FwdIt16FwdIt16FwdIt21T15BinaryOperation" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Oblicza sumę poprzedzającą używając funktora <code class="docutils literal notranslate"><span class="pre">binary_op()</span></code> (używając wartości początkowej <code class="docutils literal notranslate"><span class="pre">init</span></code>) i
+zapisuje wyniki do sekwencji wskazywanej iteratorem <code class="docutils literal notranslate"><span class="pre">d_first</span></code>.</p>
+<p>Przedrostek <em>inclusive</em> oznacza, że i-ty element jest uwzględniany w i-tej sumie.</p>
+</section>
+<section id="std-transform-inclusive-scan-oraz-transform-exclusive-scan">
+<h3>std::transform_inclusive_scan oraz transform_exclusive_scan<a class="headerlink" href="#std-transform-inclusive-scan-oraz-transform-exclusive-scan" title="Permalink to this heading">#</a></h3>
+<p>Algorytmy będące połączeniem transformacji i i odpowiedniego algorytmu skanującego.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="filesystem.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Biblioteka Filesystem</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="new-library-features.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Nowe elementy biblioteki standardowej</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lista-algorytmow-wspolbieznych">Lista algorytmów współbieżnych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funkcje-dostepu-do-danych">Funkcje dostępu do danych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wytyczne-wykonania-algorytmow-wspolbieznych">Wytyczne wykonania algorytmów współbieżnych</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-execution-sequenced-policy-obiekt-std-execution-seq">std::execution::sequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::seq</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-execution-parallel-policy-obiekt-std-execution-par">std::execution::parallel_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-execution-parallel-unsequenced-policy-obiekt-std-execution-par-unseq">std::execution::parallel_unsequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par_unseq</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wyjatki-w-algorytmach-wspolbieznych">Wyjątki w algorytmach współbieżnych</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-algorytmy-wspolbiezne">Nowe algorytmy współbieżne</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-reduce">std::reduce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-transform-reduce">std::transform_reduce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-exclusive-scan">std::exclusive_scan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-inclusive-scan">std::inclusive_scan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-transform-inclusive-scan-oraz-transform-exclusive-scan">std::transform_inclusive_scan oraz transform_exclusive_scan</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś - Infotraining
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

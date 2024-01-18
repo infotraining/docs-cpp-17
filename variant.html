@@ -1,0 +1,831 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Klasa std::variant &#8212; Book title</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'variant';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Klasa std::optional" href="optional.html" />
+    <link rel="prev" title="Klasa std::any" href="any.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Book title - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Book title - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Programowanie w C++17
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template/issues/new?title=Issue%20on%20page%20%2Fvariant.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/variant.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Klasa std::variant</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stosowanie-std-variant">Stosowanie std::variant</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konstrukcja-zmiennej-wariantowej">Konstrukcja zmiennej wariantowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przypisania-wartosci-do-zmiennej-wariantowej">Przypisania wartości do zmiennej wariantowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dostep-do-wartosci-przechowywanej-w-zmiennej-wariantowej">Dostęp do wartości przechowywanej w zmiennej wariantowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inne-funkcje-api-dla-klasy-std-variant">Inne funkcje API dla klasy std::variant</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-pustego-stanu">Problem pustego stanu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wizytowanie-wariantow">Wizytowanie wariantów</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasa-wizytatora">Klasa wizytatora</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wizytacja-za-pomoca-lambd">Wizytacja za pomocą lambd</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="klasa-std-variant">
+<h1>Klasa std::variant<a class="headerlink" href="#klasa-std-variant" title="Permalink to this heading">#</a></h1>
+<p>Typ wariantowy w C++17:</p>
+<ul class="simple">
+<li><p>umożliwia bezpieczne (ze względu na typy) przechowanie wartości określonego typu, wybranego z listy typów definiujących zmienną wariantową</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::variant</span></code> jest implementacją koncepcji bezpiecznej unii (<em>type-safe union</em>)</p></li>
+</ul>
+</li>
+<li><p>umożliwia statyczny podgląd (wizytację) zmiennych wariantowych</p></li>
+<li><p>efektywnie składuje wartości z listy typów wariantowych na stosie</p>
+<ul>
+<li><p>nie może dynamicznie alokować pamięci na stercie (istotna różnica w stosunku do <code class="docutils literal notranslate"><span class="pre">std::any</span></code>)</p></li>
+</ul>
+</li>
+<li><p>nie może przechowywać referencji, tablic oraz typu <code class="docutils literal notranslate"><span class="pre">void</span></code></p></li>
+<li><p>może zawierać duplikaty typów na liście</p>
+<ul>
+<li><p>obsługa takiego przypadku jest realizowana poprzez indeksy (tak jak w <code class="docutils literal notranslate"><span class="pre">std::tuple</span></code>)</p></li>
+</ul>
+</li>
+</ul>
+<p>Unie w C++ mogą przechowywać tylko typy POD:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">union</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+
+<span class="n">u</span><span class="p">.</span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+<span class="n">u</span><span class="p">.</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// nadpisuje u.d (OK: u.d jest typem POD)</span>
+</pre></div>
+</div>
+<p>Są zatem bezużyteczne w programowaniu obiektowym:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">union</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="c1">// błąd kompilacji: std::string nie jest typem POD</span>
+<span class="p">}</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Alternatywne rozwiązania:</p>
+<ul class="simple">
+<li><p>użycie <code class="docutils literal notranslate"><span class="pre">void*</span></code> - jest  niebezpieczne typologicznie</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::any</span></code></p>
+<ul>
+<li><p>rozwiązanie mało wydajne</p></li>
+<li><p>dodanie nowego typu może spowodować błędy</p></li>
+</ul>
+</li>
+</ul>
+<section id="stosowanie-std-variant">
+<h2>Stosowanie std::variant<a class="headerlink" href="#stosowanie-std-variant" title="Permalink to this heading">#</a></h2>
+<p>Plik nagłówkowy: &lt;variant&gt;</p>
+<section id="konstrukcja-zmiennej-wariantowej">
+<h3>Konstrukcja zmiennej wariantowej<a class="headerlink" href="#konstrukcja-zmiennej-wariantowej" title="Permalink to this heading">#</a></h3>
+<p>Deklarując typ wariantowy <code class="docutils literal notranslate"><span class="pre">std::variant</span></code> trzeba podać zestaw typów, które będą mogły być reprezentowane w typie wariantowym.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">my_variant1</span><span class="p">;</span><span class="w"> </span><span class="c1">// holds an int with a default value 0</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">my_variant2</span><span class="p">(</span><span class="mf">3.14</span><span class="p">);</span><span class="w"> </span><span class="c1">// holds a double 3.14</span>
+
+<span class="n">my_variant1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
+<span class="n">my_variant1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.52</span><span class="p">;</span>
+<span class="n">my_variant1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="n">s</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Domyślny konstruktor typu wariantowego inicjuje zmienną domyślną wartością dla pierwszego typu
+z listy.</p>
+<p>Jeśli pierwszy typ z listy nie jest domyślnie konstruowalny, można użyć tagu - <code class="docutils literal notranslate"><span class="pre">std::monostate</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">S</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">S</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="p">{</span><span class="n">v</span><span class="p">}</span>
+<span class="w">    </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v1</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR - ill-formed</span>
+<span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">monostate</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v2</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK - now v2 must be assigned</span>
+</pre></div>
+</div>
+<p>Konstruktor typu wariantowego może przeprowadzać konwersje, co może dać zaskakujący efekt:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">variant</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK, but chooses bool</span>
+</pre></div>
+</div>
+</section>
+<section id="przypisania-wartosci-do-zmiennej-wariantowej">
+<h3>Przypisania wartości do zmiennej wariantowej<a class="headerlink" href="#przypisania-wartosci-do-zmiennej-wariantowej" title="Permalink to this heading">#</a></h3>
+<p>Przypisanie nowej wartości dla zmiennej wariantowej możemy zrealizować na dwa sposoby:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EaSR7variantRR1T">
+<span id="_CPPv3I0EaSRR1T"></span><span id="_CPPv2I0EaSRR1T"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="n"><span class="pre">variant</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EaSR7variantRR1T" title="operator=::T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EaSR7variantRR1T" title="Permalink to this definition">#</a><br /></dt>
+<dd><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v1</span><span class="p">;</span>
+
+<span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"> </span><span class="c1">// v1 holds int{42}</span>
+<span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="c1">// v1 holds &quot;text&quot;s</span>
+<span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w"> </span><span class="c1">// v1 holds double{3.14}</span>
+
+
+<span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v2</span><span class="p">;</span>
+<span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+
+<span class="n">variant</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v3</span><span class="p">;</span>
+<span class="n">v3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ctext&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// v3 holds bool{true}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0DpE7emplaceR1TDpRR4Args">
+<span id="_CPPv3I0DpE7emplaceDpRR4Args"></span><span id="_CPPv2I0DpE7emplaceDpRR4Args"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="sig-name descname"><span class="n"><span class="pre">Args</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><a class="reference internal" href="#_CPPv4I0DpE7emplaceR1TDpRR4Args" title="emplace::T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">emplace</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0DpE7emplaceR1TDpRR4Args" title="emplace::Args"><span class="n"><span class="pre">Args</span></span></a><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">...</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">args</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0DpE7emplaceR1TDpRR4Args" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Tworzy nową wartość (<em>in-place</em>) w istniejącej zmiennej wariantowej.
+Jest jedyną możliwością przypisania wartości dla duplikatów typu na liście.</p>
+</dd></dl>
+
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Gadget</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">id_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name_</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Gadget</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">id_</span><span class="p">{</span><span class="n">id</span><span class="p">},</span><span class="w"> </span><span class="n">name_</span><span class="p">{</span><span class="n">name</span><span class="p">}</span>
+<span class="w">    </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="c1">//...</span>
+<span class="p">};</span>
+
+<span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">Gadget</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+
+<span class="n">v</span><span class="p">.</span><span class="n">emplace</span><span class="o">&lt;</span><span class="n">Gadget</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ipad&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// creates Gadget{1, &quot;ipad&quot;} inside variant object</span>
+<span class="n">v</span><span class="p">.</span><span class="n">emplace</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w"> </span><span class="c1">// sets the first int to 42</span>
+<span class="n">v</span><span class="p">.</span><span class="n">emplace</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">665</span><span class="p">);</span><span class="w"> </span><span class="c1">// sets the second int to 665</span>
+</pre></div>
+</div>
+</section>
+<section id="dostep-do-wartosci-przechowywanej-w-zmiennej-wariantowej">
+<h3>Dostęp do wartości przechowywanej w zmiennej wariantowej<a class="headerlink" href="#dostep-do-wartosci-przechowywanej-w-zmiennej-wariantowej" title="Permalink to this heading">#</a></h3>
+<p>Bezpieczny dostęp do wartości przechowywanej w zmiennej wariantowej odbywa się przy pomocy funkcji <code class="docutils literal notranslate"><span class="pre">std::get&lt;T&gt;(v)</span></code> lub <code class="docutils literal notranslate"><span class="pre">std::get&lt;Index&gt;(v)</span></code>.</p>
+<p>Jeśli wywołanie <code class="docutils literal notranslate"><span class="pre">get(v)</span></code> okaże się nieskuteczne (zmienna wariantowa zawiera wartość typu różnego od argumentu szablonu funkcji <code class="docutils literal notranslate"><span class="pre">get(v)</span></code>), zgłaszany jest wyjątek <code class="docutils literal notranslate"><span class="pre">std::bad_variant_access</span></code>.</p>
+<p>Aby uniknąć zgłaszania niepowodzenia w postaci wyjątku, należy wywołać funkcję <code class="docutils literal notranslate"><span class="pre">std::get_if(v)</span></code> przekazując jako argument wskaźnik do zmiennej wariantowej. W razie niezgodności typów, zwrócony zostanie <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">my_variant</span><span class="p">{</span><span class="s">&quot;text&quot;</span><span class="n">s</span><span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">my_variant</span><span class="p">);</span><span class="w">  </span><span class="c1">// OK</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">my_variant</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK</span>
+<span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot;!!!&quot;</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">my_variant</span><span class="p">);</span><span class="w"> </span><span class="c1">// ERROR - throws std::bad_variant_access</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">*</span><span class="w"> </span><span class="n">ptr_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get_if</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">my_variant</span><span class="p">);</span><span class="w"> </span><span class="n">ptr_str</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Stored string: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">ptr_str</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="inne-funkcje-api-dla-klasy-std-variant">
+<h3>Inne funkcje API dla klasy std::variant<a class="headerlink" href="#inne-funkcje-api-dla-klasy-std-variant" title="Permalink to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NKSt7variant5indexEv">
+<span id="_CPPv3NKSt7variant5indexEv"></span><span id="_CPPv2NKSt7variant5indexEv"></span><span id="std::variant::indexC"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">variant</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NKSt7variant5indexEv" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Zwraca indeks (licząc od zera) typu z listy dla danego stanu zmiennej wariantowej.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">index</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0E17holds_alternativebRKNSt7variantE">
+<span id="_CPPv3I0E17holds_alternativeRKNSt7variantE"></span><span id="_CPPv2I0E17holds_alternativeRKNSt7variantE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">holds_alternative</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">variant</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">v</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0E17holds_alternativebRKNSt7variantE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Sprawdza, czy zmienna wariantowa przechowuje w danym momencie odpowiedni typ.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">holds_alternative</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Holds double</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="problem-pustego-stanu">
+<h2>Problem pustego stanu<a class="headerlink" href="#problem-pustego-stanu" title="Permalink to this heading">#</a></h2>
+<p>Obiekt klasy <code class="docutils literal notranslate"><span class="pre">std::variant</span></code> może stać się pustym obiektem tylko w przypadku wystąpienia wyjątku w trakcie operacji przypisania nowej (lub domyślnej) wartości.</p>
+<p>W takim przypadku:</p>
+<ul class="simple">
+<li><p>metoda <code class="docutils literal notranslate"><span class="pre">valueless_by_exception()</span></code> zwraca <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p>a wywołanie metody <code class="docutils literal notranslate"><span class="pre">index()</span></code> zwraca wartość <code class="docutils literal notranslate"><span class="pre">std::variant_npos</span></code></p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">S</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">operator</span><span class="w"> </span><span class="kt">int</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;ERROR#13&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">{</span><span class="mf">3.14</span><span class="p">};</span>
+
+<span class="k">try</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">v</span><span class="p">.</span><span class="n">emplace</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">S</span><span class="p">{});</span><span class="w"> </span><span class="c1">// throws while being set</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(...)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">valueless_by_exception</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">index</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant_npos</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="wizytowanie-wariantow">
+<h2>Wizytowanie wariantów<a class="headerlink" href="#wizytowanie-wariantow" title="Permalink to this heading">#</a></h2>
+<p>Rozwiązaniem problemu przeglądania wartości przechowywanych w zmiennych wariantowych jest zastosowanie wizytatora. Wizytatory są implementowane jako obiekty funkcyjne z operatorami wywołania funkcji przyjmującymi argumenty typów odpowiadających typom z zestawu wariantowego.</p>
+<p>Wizytacja odbywa się za pośrednictwem funkcji <code class="docutils literal notranslate"><span class="pre">std::visit(wizytator,</span> <span class="pre">zmienna-wariantowa)</span></code>. Jeżeli zmieni się zestaw typów w zmiennej wariantowej, która była wizytowana przez wizytatora i wizytator nie będzie w stanie obsłużyć nowo dodanego typu, to kompilator zgłosi błąd.</p>
+<section id="klasa-wizytatora">
+<h3>Klasa wizytatora<a class="headerlink" href="#klasa-wizytatora" title="Permalink to this heading">#</a></h3>
+<p>Klasa wizytatora:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PrintVisitor</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;int: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;string: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">var</span><span class="p">(</span><span class="s">&quot;Test&quot;</span><span class="n">s</span><span class="p">);</span>
+
+<span class="n">PrintVisitor</span><span class="w"> </span><span class="n">pv</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">visit</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">);</span><span class="w"> </span><span class="c1">// compile error if type is not supported by visitor</span>
+
+<span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">visit</span><span class="p">(</span><span class="n">PrintVisitor</span><span class="p">{},</span><span class="w"> </span><span class="n">var</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="wizytacja-za-pomoca-lambd">
+<h3>Wizytacja za pomocą lambd<a class="headerlink" href="#wizytacja-za-pomoca-lambd" title="Permalink to this heading">#</a></h3>
+<p>Do wizytacji można również wykorzystać lambdę generyczną:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">visit</span><span class="p">([](</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">var</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Istnieje możliwość zbudowania wizytora w miejscu wizytacji (<em>in-place</em>). Do tego celu będziemy potrzebowali
+funkcji wariadycznej <code class="docutils literal notranslate"><span class="pre">make_inline_visitor()</span></code>, której implementacja korzysta z <em>variadic templates</em>.
+Funkcja ta pozwoli utworzyć obiekt funkcyjny składający się z przeciążonych operatorów wywołania funkcji, który zostanie wykorzystany do wizytacji zmiennej wariantowej.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Overloader</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Ts</span><span class="p">...</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">Ts</span><span class="o">::</span><span class="k">operator</span><span class="p">()...;</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">make_inline_visitor</span><span class="p">(</span><span class="n">Ts</span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">op</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Overloader</span><span class="o">&lt;</span><span class="n">Ts</span><span class="p">...</span><span class="o">&gt;</span><span class="p">{</span><span class="n">op</span><span class="p">...};</span>
+<span class="p">}</span>
+
+
+<span class="n">variant</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">local_visitor</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">make_inline_visitor</span><span class="p">(</span>
+<span class="w">        </span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;int: &quot;</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">to_string</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">[](</span><span class="kt">double</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;double: &quot;</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">to_string</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;string: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">visit</span><span class="p">(</span><span class="n">local_visitor</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;int: 42&quot;</span><span class="n">s</span><span class="p">);</span>
+
+<span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">visit</span><span class="p">(</span><span class="n">local_visitor</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;string: text&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="any.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Klasa std::any</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="optional.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Klasa std::optional</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stosowanie-std-variant">Stosowanie std::variant</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konstrukcja-zmiennej-wariantowej">Konstrukcja zmiennej wariantowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przypisania-wartosci-do-zmiennej-wariantowej">Przypisania wartości do zmiennej wariantowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dostep-do-wartosci-przechowywanej-w-zmiennej-wariantowej">Dostęp do wartości przechowywanej w zmiennej wariantowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inne-funkcje-api-dla-klasy-std-variant">Inne funkcje API dla klasy std::variant</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-pustego-stanu">Problem pustego stanu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wizytowanie-wariantow">Wizytowanie wariantów</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasa-wizytatora">Klasa wizytatora</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wizytacja-za-pomoca-lambd">Wizytacja za pomocą lambd</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś - Infotraining
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

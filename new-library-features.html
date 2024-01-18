@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Nowe elementy biblioteki standardowej &#8212; Book title</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'new-library-features';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Algorytmy współbieżne STL" href="parallel-stl.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Book title - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Book title - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Programowanie w C++17
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template/issues/new?title=Issue%20on%20page%20%2Fnew-library-features.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/new-library-features.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nowe elementy biblioteki standardowej</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-algorytmy-stl">Nowe algorytmy STL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-clamp">std::clamp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-sample">std::sample</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-search-opcje-wyszukiwania">std::search - opcje wyszukiwania</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poprawki-dla-kontenerow-standardowych">Poprawki dla kontenerów standardowych</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mniejsze-poprawki-w-api-kontenerow">Mniejsze poprawki w API kontenerów</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-wezlow-dla-zbiorow-i-map">Transfer węzłów dla zbiorów i map</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#typ-wezla-node-type">Typ węzła - node_type</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-operacje-w-interfejsie-kontenerow">Nowe operacje w interfejsie kontenerów</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-funkcje-pomocnicze">Nowe funkcje pomocnicze</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-size-obj-std-empty-obj-std-data-obj">std::size(obj), std::empty(obj), std::data(obj)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-as-const-obj">std::as_const(obj)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wielowatkowosc-w-c-17">Wielowątkowość w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#muteksy-wspoldzielone">Muteksy współdzielone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-scoped-lock">std::scoped_lock&lt;&gt;</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-atomic-t-is-always-lock-free">std::atomic&lt;T&gt;::is_always_lock_free</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacje-o-wielkosci-linii-cache-a-l1">Informacje o wielkości linii cache’a L1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#std-shared-ptr-t">std::shared_ptr&lt;T[]&gt;</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="nowe-elementy-biblioteki-standardowej">
+<h1>Nowe elementy biblioteki standardowej<a class="headerlink" href="#nowe-elementy-biblioteki-standardowej" title="Permalink to this heading">#</a></h1>
+<section id="nowe-algorytmy-stl">
+<h2>Nowe algorytmy STL<a class="headerlink" href="#nowe-algorytmy-stl" title="Permalink to this heading">#</a></h2>
+<section id="std-clamp">
+<h3>std::clamp<a class="headerlink" href="#std-clamp" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template&lt;class</span> <span class="pre">T&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">constexpr</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">clamp(</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">v,</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">lo,</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">hi</span> <span class="pre">)</span></code></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template&lt;class</span> <span class="pre">T,</span> <span class="pre">class</span> <span class="pre">Compare&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">constexpr</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">clamp(</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">v,</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">lo,</span> <span class="pre">const</span> <span class="pre">T&amp;</span> <span class="pre">hi,</span> <span class="pre">Compare</span> <span class="pre">comp</span> <span class="pre">)</span></code></div>
+</div>
+</li>
+</ul>
+<p>Ogranicza wartość do odpowiednich przedziałów. Odpowiednik: <code class="docutils literal notranslate"><span class="pre">std::min(std::max(val,</span> <span class="pre">lo),</span> <span class="pre">hi)</span></code></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">clamped</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">);</span><span class="w">  </span><span class="c1">// c1 = 42;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">clamped</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">);</span><span class="w"> </span><span class="c1">// c2 = 10;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">clamped</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">);</span><span class="w"> </span><span class="c1">// c3 = 90</span>
+</pre></div>
+</div>
+</section>
+<section id="std-sample">
+<h3>std::sample<a class="headerlink" href="#std-sample" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template&lt;class</span> <span class="pre">PopulationIt,</span> <span class="pre">class</span> <span class="pre">SampleIt,</span> <span class="pre">class</span> <span class="pre">Distance,</span> <span class="pre">class</span> <span class="pre">UniformRandomBitGenerator&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SampleIt</span> <span class="pre">sample(PopulationIt</span> <span class="pre">first,</span> <span class="pre">PopulationIt</span> <span class="pre">last,</span> <span class="pre">SampleIt</span> <span class="pre">out,</span> <span class="pre">Distance</span> <span class="pre">n,</span> <span class="pre">UniformRandomBitGenerator&amp;&amp;</span> <span class="pre">g)</span></code></div>
+</div>
+</li>
+</ul>
+<p>Ekstrakcja próbki statystycznej z sekwencji określonej iteratorami <code class="docutils literal notranslate"><span class="pre">[first;</span> <span class="pre">last)</span></code>.
+Próbka <code class="docutils literal notranslate"><span class="pre">n</span></code> elementów jest zapisywana do sekwencji wskazywanej przez iterator wyjściowy <code class="docutils literal notranslate"><span class="pre">out</span></code>. Elementy są wybierane
+za pomocą generatora liczb pseudolosowych <code class="docutils literal notranslate"><span class="pre">g</span></code>.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abcdefgh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">sample</span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
+<span class="w">            </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">mt19937</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">random_device</span><span class="p">{}()});</span>
+
+<span class="c1">// out can be: cdefg</span>
+</pre></div>
+</div>
+</section>
+<section id="std-search-opcje-wyszukiwania">
+<h3>std::search - opcje wyszukiwania<a class="headerlink" href="#std-search-opcje-wyszukiwania" title="Permalink to this heading">#</a></h3>
+<p>C++17 oferuje nowe (szybsze) opcje wyszukiwania podciągów wykorzystywane w
+algorytmie <code class="docutils literal notranslate"><span class="pre">std::search()</span></code>.</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template&lt;class</span> <span class="pre">ForwardIt,</span> <span class="pre">class</span> <span class="pre">BinaryPredicate</span> <span class="pre">=</span> <span class="pre">std::equal_to&lt;&gt;&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">default_searcher;</span></code></div>
+</div>
+<p>Standardowa (taka jak przed C++17) implementacja opcji wyszukiwania.</p>
+</li>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template&lt;class</span> <span class="pre">RandomIt1,</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Hash</span> <span class="pre">=</span> <span class="pre">std::hash&lt;typename</span> <span class="pre">std::iterator_traits&lt;RandomIt1&gt;::value_type&gt;,</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">BinaryPredicate</span> <span class="pre">=</span> <span class="pre">std::equal_to&lt;&gt;</span></code></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">class</span> <span class="pre">boyer_moore_searcher;</span></code></div>
+</div>
+<p>Implementacja algorytmu wyszukiwania <em>Boyer-Moore</em></p>
+</li>
+<li><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">template&lt;class</span> <span class="pre">RandomIt1,</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Hash</span> <span class="pre">=</span> <span class="pre">std::hash&lt;typename</span> <span class="pre">std::iterator_traits&lt;RandomIt1&gt;::value_type&gt;,</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">BinaryPredicate</span> <span class="pre">=</span> <span class="pre">std::equal_to&lt;&gt;</span></code></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">class</span> <span class="pre">boyer_moore_horspool_searcher;</span></code></div>
+</div>
+<p>Implementacja algorytmu <em>Boyer-Moore-Horspool</em></p>
+</li>
+</ul>
+<p>Przykład użycia nowych algorytmów wyszukiwania:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,&quot;</span>
+<span class="w">                 </span><span class="s">&quot; sed do eiusmod tempor incididunt ut labore et dolore magna aliqua&quot;</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">needle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pisci&quot;</span><span class="p">;</span>
+
+
+
+<span class="n">std</span><span class="o">::</span><span class="n">default_searcher</span><span class="w"> </span><span class="n">searcher</span><span class="p">{</span><span class="n">needle</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">needle</span><span class="p">.</span><span class="n">end</span><span class="p">()};</span><span class="w"> </span><span class="c1">// default search</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">boyer_moore_searcher</span><span class="w"> </span><span class="n">searcher</span><span class="p">{</span><span class="n">needle</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">needle</span><span class="p">.</span><span class="n">end</span><span class="p">()};</span><span class="w"> </span><span class="c1">// faster search</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">boyer_moore_horspool_searcher</span><span class="w"> </span><span class="n">searcher</span><span class="p">{</span><span class="n">needle</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">needle</span><span class="p">.</span><span class="n">end</span><span class="p">()};</span>
+
+
+<span class="k">if</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">search</span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">searcher</span><span class="p">);</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The string &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">needle</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; found at offset &quot;</span>
+<span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The string &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">needle</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="poprawki-dla-kontenerow-standardowych">
+<h2>Poprawki dla kontenerów standardowych<a class="headerlink" href="#poprawki-dla-kontenerow-standardowych" title="Permalink to this heading">#</a></h2>
+<section id="mniejsze-poprawki-w-api-kontenerow">
+<h3>Mniejsze poprawki w API kontenerów<a class="headerlink" href="#mniejsze-poprawki-w-api-kontenerow" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>nowa operacja <code class="docutils literal notranslate"><span class="pre">try_emplace()</span></code> dla map i map z haszowaniem</p></li>
+<li><p>operacje <code class="docutils literal notranslate"><span class="pre">emplace_back()</span></code> i <code class="docutils literal notranslate"><span class="pre">emplace_front()</span></code></p>
+<ul>
+<li><p>zwracają referencję do wstawionego elementu</p></li>
+<li><p>modyfikacja dla <code class="docutils literal notranslate"><span class="pre">vector</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">forward_list</span></code>, <code class="docutils literal notranslate"><span class="pre">stack</span></code>, <code class="docutils literal notranslate"><span class="pre">queue</span></code></p></li>
+</ul>
+</li>
+<li><p>operacja <code class="docutils literal notranslate"><span class="pre">data()</span></code> dla stringów bez modyfikatora <code class="docutils literal notranslate"><span class="pre">const</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::vector</span></code>, <code class="docutils literal notranslate"><span class="pre">std::list</span></code> i <code class="docutils literal notranslate"><span class="pre">std::forward_list</span></code> wspierają niekompletne typy</p></li>
+</ul>
+</section>
+<section id="transfer-wezlow-dla-zbiorow-i-map">
+<h3>Transfer węzłów dla zbiorów i map<a class="headerlink" href="#transfer-wezlow-dla-zbiorow-i-map" title="Permalink to this heading">#</a></h3>
+<p>C++17 rozszerza API zbiorów i map (z haszowaniem) o możliwość przepinania węzłów
+pomiędzy kontenerami.</p>
+<ul class="simple">
+<li><p>lepsza wydajność niż <code class="docutils literal notranslate"><span class="pre">erase()</span></code> i <code class="docutils literal notranslate"><span class="pre">insert()</span></code> - żadne z elementów przechowywanych w kontenerze nie są kopiowane lub przesuwane</p></li>
+<li><p>aby przepiąć węzeł tylko typy klucza/wartości (oraz alokatora) muszą być zgodne ze sobą</p>
+<ul>
+<li><p>kryteria porównań kluczy, funkcje haszujące mogą być różne</p></li>
+<li><p>dozwolone jest przepinanie z kontenera nie zezwalającego na duplikaty do kontenera z duplikatami kluczy: np. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">&lt;-&gt;</span> <span class="pre">multiset</span></code></p></li>
+</ul>
+</li>
+</ul>
+<section id="typ-wezla-node-type">
+<h4>Typ węzła - node_type<a class="headerlink" href="#typ-wezla-node-type" title="Permalink to this heading">#</a></h4>
+<p>Zdefiniowany jest typ węzła <code class="docutils literal notranslate"><span class="pre">container::node_type</span></code></p>
+<ul class="simple">
+<li><p>szczegółowa implementacja nie jest specyfikowana</p></li>
+<li><p>składowa <code class="docutils literal notranslate"><span class="pre">value()</span></code> zwraca wartość dla zbiorów</p></li>
+<li><p>składowe <code class="docutils literal notranslate"><span class="pre">key()</span></code> oraz <code class="docutils literal notranslate"><span class="pre">mapped()</span></code> są dostępne dla map</p></li>
+<li><p>wspierana jest semantyka przenoszenia (np. typy <em>move-only</em>)</p></li>
+</ul>
+</section>
+<section id="nowe-operacje-w-interfejsie-kontenerow">
+<h4>Nowe operacje w interfejsie kontenerów<a class="headerlink" href="#nowe-operacje-w-interfejsie-kontenerow" title="Permalink to this heading">#</a></h4>
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N3set7extractE">
+<span id="_CPPv3N3set7extractE"></span><span id="_CPPv2N3set7extractE"></span><span class="n"><span class="pre">node_type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">extract</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">const_iterator</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pos</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3set7extractE" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp">
+<span class="n"><span class="pre">node_type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">extract</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">const_iterator</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pos</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp">
+<span class="n"><span class="pre">node_type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">extract</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">key_type</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">key</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Dokonuje ekstrakcji węzła wskazanego iteratorem <code class="docutils literal notranslate"><span class="pre">pos</span></code> lub zawierającego klucz równoważny <code class="docutils literal notranslate"><span class="pre">key</span></code>. Zwraca uchwyt do węzła.
+Unieważniane są tylko iteratory wskazujące na usuwany element. Referencje i wskaźniki do ekstrahowanego elementu pozostają prawidłowe.</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N3set6insertE">
+<span id="_CPPv3N3set6insertE"></span><span id="_CPPv2N3set6insertE"></span><span class="n"><span class="pre">insert_return_type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">node_type</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">nh</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3set6insertE" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp">
+<span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">insert</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">const_iterator</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hint</span></span>, <span class="n"><span class="pre">node_type</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">nh</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Wstawia do kontenera element, którego właścicielem jest węzeł <code class="docutils literal notranslate"><span class="pre">nh</span></code>. Jeśli <code class="docutils literal notranslate"><span class="pre">nh</span></code> jest pustym węzłem, to nie jest wykonana żadna akcja.</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N3set5mergeE">
+<span id="_CPPv3N3set5mergeE"></span><span id="_CPPv2N3set5mergeE"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">merge</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">set</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">source</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3set5mergeE" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp">
+<span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">merge</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">multiset</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">source</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Próbuje dokonać ekstrakcji węzłów w kontenerze <code class="docutils literal notranslate"><span class="pre">source</span></code> i przepiąć je (<em>splice</em>) do kontenera <code class="docutils literal notranslate"><span class="pre">*this</span></code> używając
+komparatora z kontenera <code class="docutils literal notranslate"><span class="pre">*this</span></code>. Jeśli w kontenerze <code class="docutils literal notranslate"><span class="pre">*this</span></code> znajduje się już element równoważny, to nie jest on poddawany
+ekstrakcji i zostaje w kontenerze <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
+</dd></dl>
+
+<p>Przykład przepięcia węzłów między kontenerami asocjacyjnymi:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">src</span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">}};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dst</span><span class="p">{{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;THREE&quot;</span><span class="p">}};</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">pos_src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">src</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">dst</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">extract</span><span class="p">(</span><span class="n">pos_src</span><span class="p">));</span><span class="w"> </span><span class="c1">// splice using iterator</span>
+
+<span class="n">dst</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">extract</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="w"> </span><span class="c1">// splice using key value</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dst</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">extract</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+
+<span class="c1">// result.position == next(next(dst.begin()))</span>
+<span class="c1">// result.inserted == false</span>
+<span class="c1">// result.node.key() == 3</span>
+<span class="c1">// result.node.mapped() == &quot;three&quot;</span>
+
+<span class="c1">// instead the last statement</span>
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">success</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dst</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">extract</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="w"> </span><span class="c1">// splice using key value</span>
+
+<span class="c1">// pos == next(next(dst.begin()))</span>
+<span class="c1">// success == false</span>
+<span class="c1">// node.key() == 3</span>
+<span class="c1">// node.mapped() == &quot;three&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="nowe-funkcje-pomocnicze">
+<h2>Nowe funkcje pomocnicze<a class="headerlink" href="#nowe-funkcje-pomocnicze" title="Permalink to this heading">#</a></h2>
+<section id="std-size-obj-std-empty-obj-std-data-obj">
+<h3>std::size(obj), std::empty(obj), std::data(obj)<a class="headerlink" href="#std-size-obj-std-empty-obj-std-data-obj" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>jednolite API dla tablic statycznych, kontenerów i list inicjalizacyjnych</p>
+<ul>
+<li><p>nagłówek: <code class="docutils literal notranslate"><span class="pre">&lt;iterator&gt;</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">check</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;size: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;empty: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">boolalpha</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">empty</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;data: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">data</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// prints address</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span>
+<span class="n">check</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span>
+<span class="n">check</span><span class="p">(</span><span class="n">vec</span><span class="p">);</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">il</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span>
+<span class="n">check</span><span class="p">(</span><span class="n">il</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="std-as-const-obj">
+<h3>std::as_const(obj)<a class="headerlink" href="#std-as-const-obj" title="Permalink to this heading">#</a></h3>
+<p>Funkcja tworzy stały widok dla przekazanego jako argument obiektu. Przydatne narzędzie przy wywoływaniu przeciążonych funkcji.
+Pozwala na uniknięcie rzutowań przy pomocy operatora <code class="docutils literal notranslate"><span class="pre">const_cast&lt;&gt;</span></code></p>
+<ul class="simple">
+<li><p>nagłówek <code class="docutils literal notranslate"><span class="pre">&lt;utility&gt;</span></code></p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">mutable_string</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">const_view</span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">as_const</span><span class="p">(</span><span class="n">mutable_string</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">process_text</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">process_text</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2</span>
+
+<span class="n">process_string</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">as_const</span><span class="p">(</span><span class="n">mutable_string</span><span class="p">));</span><span class="w"> </span><span class="c1">// calls 2nd version</span>
+</pre></div>
+</div>
+<p>Funkcję <code class="docutils literal notranslate"><span class="pre">as_const()</span></code> można wykorzystać przy przechwytywaniu referencji w wyrażeniach lambda:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">printer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">coll</span><span class="o">&amp;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">as_const</span><span class="p">(</span><span class="n">vec</span><span class="p">)]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">coll</span><span class="p">)</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="wielowatkowosc-w-c-17">
+<h2>Wielowątkowość w C++17<a class="headerlink" href="#wielowatkowosc-w-c-17" title="Permalink to this heading">#</a></h2>
+<section id="muteksy-wspoldzielone">
+<h3>Muteksy współdzielone<a class="headerlink" href="#muteksy-wspoldzielone" title="Permalink to this heading">#</a></h3>
+<p>W celu implementacji blokad współdzielonych (<em>Read/Write Locks</em>):</p>
+<ul class="simple">
+<li><p>w C++14 wprowadzono</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::shared_timed_mutex</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::shared_lock&lt;&gt;</span></code></p></li>
+</ul>
+</li>
+<li><p>C++17 dodaje</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::shared_mutex</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">shared_mutex</span><span class="w"> </span><span class="n">smtx</span><span class="p">;</span>
+
+<span class="c1">//...</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_lock</span><span class="w"> </span><span class="n">slk</span><span class="p">{</span><span class="n">smtx</span><span class="p">};</span><span class="w"> </span><span class="c1">// calls smtx.lock_shared()</span>
+
+<span class="w">    </span><span class="c1">// reading from a shared resource</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// smtx.unlock_shared() called</span>
+</pre></div>
+</div>
+</section>
+<section id="std-scoped-lock">
+<h3>std::scoped_lock&lt;&gt;<a class="headerlink" href="#std-scoped-lock" title="Permalink to this heading">#</a></h3>
+<p>Klasa <code class="docutils literal notranslate"><span class="pre">std::scoped_lock&lt;&gt;</span></code> jest wariadyczną wersją <code class="docutils literal notranslate"><span class="pre">std::lock_guard&lt;&gt;</span></code>.
+Posiada wbudowaną ochronę przed zakleszczeniem (<em>deadlock</em>):</p>
+<p>Pozyskiwanie wielu muteksów przed C++17:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">transfer</span><span class="p">(</span><span class="n">BankAccount</span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">BankAccount</span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock</span><span class="p">(</span><span class="n">from</span><span class="p">.</span><span class="n">mtx_</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">.</span><span class="n">mtx_</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lk_from</span><span class="p">{</span><span class="n">from</span><span class="p">.</span><span class="n">mtx_</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">adopt_lock</span><span class="p">};</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lk_to</span><span class="p">{</span><span class="n">to</span><span class="p">.</span><span class="n">mtx_</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">adopt_lock</span><span class="p">};</span>
+
+<span class="w">    </span><span class="n">from</span><span class="p">.</span><span class="n">balance_</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">    </span><span class="n">to</span><span class="p">.</span><span class="n">balance_</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To samo w C++17:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">transfer</span><span class="p">(</span><span class="n">BankAccount</span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">BankAccount</span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">scoped_lock</span><span class="w"> </span><span class="n">lk</span><span class="p">{</span><span class="n">from</span><span class="p">.</span><span class="n">mtx_</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">.</span><span class="n">mtx_</span><span class="p">};</span>
+<span class="w">    </span><span class="n">from</span><span class="p">.</span><span class="n">balance_</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">    </span><span class="n">to</span><span class="p">.</span><span class="n">balance_</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="std-atomic-t-is-always-lock-free">
+<h3>std::atomic&lt;T&gt;::is_always_lock_free<a class="headerlink" href="#std-atomic-t-is-always-lock-free" title="Permalink to this heading">#</a></h3>
+<p>Stała <code class="docutils literal notranslate"><span class="pre">constexpr</span></code> dla typów atomowych informująca, że implementacja atomowości dla typu <code class="docutils literal notranslate"><span class="pre">T</span></code> jest zawsze <em>lock-free</em>.</p>
+</section>
+<section id="informacje-o-wielkosci-linii-cache-a-l1">
+<h3>Informacje o wielkości linii cache’a L1<a class="headerlink" href="#informacje-o-wielkosci-linii-cache-a-l1" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">std::size_t</span> <span class="pre">hardware_destructive_interference_size</span> <span class="pre">=</span> <span class="pre">/*implementation-defined*/;</span></code></p>
+<p>Zwraca minimalną wartość offsetu pomiędzy dwoma obiektami, która pomaga uniknąć problemu <em>false-sharing</em>.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Counters</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">alignas</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">hardware_destructive_interference_size</span><span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counter1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">alignas</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">hardware_destructive_interference_size</span><span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counter2</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inline</span> <span class="pre">constexpr</span> <span class="pre">std::size_t</span> <span class="pre">hardware_constructive_interference_size</span> <span class="pre">=</span> <span class="pre">/*implementation-defined*/;</span></code></p>
+<p>Zwraca maksymalny rozmiar ciągłego fragmentu pamięci na którym wystąpi <em>false-sharing</em></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">KeepTogether</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">LargeData</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Other data members...</span>
+<span class="w">    </span><span class="k">alignas</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">KeepTogether</span><span class="p">))</span><span class="w"> </span><span class="n">KeepTogether</span><span class="w"> </span><span class="n">pack</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Other data members...</span>
+<span class="p">};</span>
+
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">KeepTogether</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hardware_constructive_interference_size</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="std-shared-ptr-t">
+<h2>std::shared_ptr&lt;T[]&gt;<a class="headerlink" href="#std-shared-ptr-t" title="Permalink to this heading">#</a></h2>
+<p>Od C++17 można bezpiecznie tworzyć <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code> dla tablicy dynamicznej:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shrd_tab</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">]);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Brak <code class="docutils literal notranslate"><span class="pre">make_shared()</span></code> dla tablic dynamicznych.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="parallel-stl.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Algorytmy współbieżne STL</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-algorytmy-stl">Nowe algorytmy STL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-clamp">std::clamp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-sample">std::sample</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-search-opcje-wyszukiwania">std::search - opcje wyszukiwania</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poprawki-dla-kontenerow-standardowych">Poprawki dla kontenerów standardowych</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mniejsze-poprawki-w-api-kontenerow">Mniejsze poprawki w API kontenerów</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-wezlow-dla-zbiorow-i-map">Transfer węzłów dla zbiorów i map</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#typ-wezla-node-type">Typ węzła - node_type</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-operacje-w-interfejsie-kontenerow">Nowe operacje w interfejsie kontenerów</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nowe-funkcje-pomocnicze">Nowe funkcje pomocnicze</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-size-obj-std-empty-obj-std-data-obj">std::size(obj), std::empty(obj), std::data(obj)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-as-const-obj">std::as_const(obj)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wielowatkowosc-w-c-17">Wielowątkowość w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#muteksy-wspoldzielone">Muteksy współdzielone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-scoped-lock">std::scoped_lock&lt;&gt;</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#std-atomic-t-is-always-lock-free">std::atomic&lt;T&gt;::is_always_lock_free</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacje-o-wielkosci-linii-cache-a-l1">Informacje o wielkości linii cache’a L1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#std-shared-ptr-t">std::shared_ptr&lt;T[]&gt;</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś - Infotraining
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

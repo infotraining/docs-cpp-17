@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Szkolenie &#8212; Book title</title>
+    <title>Programowanie w C++17 &#8212; Book title</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Wstęp do TDD" href="tdd.html" />
+    <link rel="next" title="C++17 - kompilatory" href="stdcpp17.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,12 +164,40 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Szkolenie
+                    Programowanie w C++17
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tdd.html">Wstęp do TDD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
 </ul>
 
     </div>
@@ -271,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/index.md" target="_blank"
+      <li><a href="_sources/index.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +309,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.rst</span>
 </a>
 </li>
       
@@ -353,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Szkolenie</h1>
+    <h1>Programowanie w C++17</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -367,9 +395,190 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="szkolenie">
-<h1>Szkolenie<a class="headerlink" href="#szkolenie" title="Permalink to this heading">#</a></h1>
-<p>Materiały do szkolenia <a class="reference external" href="https://www.infotraining.pl/szkolenie/c-plus-plus/tdd">Test-Driven Development w C++</a></p>
+  <section id="programowanie-w-c-17">
+<h1>Programowanie w C++17<a class="headerlink" href="#programowanie-w-c-17" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdcpp17.html#kompilatory-c-17">Kompilatory - C++17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdcpp17.html#stale-definiujace-wersje">Stałe definiujące wersje</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#structured-bindings">Structured bindings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#typy-wiazan">Typy wiązań</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#mechanizm-wiazania-structured-binding">Mechanizm wiązania <em>structured binding</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#kwalifikatory-dla-wiazan">Kwalifikatory dla wiązań</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#semantyka-przenoszenia">Semantyka przenoszenia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#praktyczne-wykorzystanie-structured-bindings">Praktyczne wykorzystanie <em>structured bindings</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#instrukcje-if-oraz-switch-z-sekcja-inicjujaca">Instrukcje if oraz switch z sekcją inicjującą</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#obiekty-tymczasowe-w-sekcji-inicjujacej">Obiekty tymczasowe w sekcji inicjującej</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#structured-bindings-i-if-z-sekcja-inicjujaca">Structured bindings i if z sekcją inicjującą</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#constexpr-if">constexpr if</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#discarded-statements">Discarded statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#mechanizm-kompilacji-szablonow">Mechanizm kompilacji szablonów</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#zmienne-inline">Zmienne inline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#agregaty-w-c-17">Agregaty w C++17</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#definicja-agregatu-w-c-17">Definicja agregatu w C++17</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#return-value-optimization-copy-elision">Return Value Optimization &amp; Copy Elision</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#kategorie-wartosci-w-c-17">Kategorie wartości w C++17</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#atrybuty">Atrybuty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#zagniezdzone-przestrzenie-nazw">Zagnieżdżone przestrzenie nazw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#statyczne-asercje-bez-komunikatow-o-bledach">Statyczne asercje bez komunikatów o błędach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#lambdy-w-c-17">Lambdy w C++17</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#przechwytywanie-this">Przechwytywanie this</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#lambdy-constexpr">Lambdy constexpr</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic-features.html#literaly">Literały</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#literaly-utf-8">Literały UTF-8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic-features.html#literaly-szesnastkowe">Literały szesnastkowe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core-fixes.html#zdefiniowana-kolejnosc-ewaluacji-wyrazen">Zdefiniowana kolejność ewaluacji wyrażeń</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core-fixes.html#reguly-ewaluacji-wyrazen-w-c-17">Reguły ewaluacji wyrażeń w C++17</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core-fixes.html#inicjalizacja-typow-wyliczeniowych">Inicjalizacja typów wyliczeniowych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core-fixes.html#definiowanie-nowych-typow-calkowitych-za-pomoca-wyliczen">Definiowanie nowych typów całkowitych za pomocą wyliczeń</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core-fixes.html#inicjalizacja-listowa-i-auto">Inicjalizacja listowa i auto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core-fixes.html#zalety-inicjalizacji-bezposredniej-z">Zalety inicjalizacji bezpośredniej z {}</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core-fixes.html#noexcept-jako-czesc-typu-funkcji">noexcept jako część typu funkcji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core-fixes.html#elementy-usuniete-ze-standardu">Elementy usunięte ze standardu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#dedukcja-argumentow-szablonu-dla-klas-ctad">Dedukcja argumentów szablonu dla klas (CTAD)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#stosowanie-mechanizmu-dedukcji-argumentow-szablonu-klasy">Stosowanie mechanizmu dedukcji argumentów szablonu klasy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#specjalny-przypadek-dedukcji-argumentow-klasy-szablonowej">Specjalny przypadek dedukcji argumentów klasy szablonowej</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#podpowiedzi-dedukcyjne-deduction-guides">Podpowiedzi dedukcyjne (<em>deduction guides</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#niejawne-podpowiedzi-dedukcyjne">Niejawne podpowiedzi dedukcyjne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#agregaty-a-dedukcja-argumentow">Agregaty a dedukcja argumentów</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates.html#podpowiedzi-dedukcyjne-w-bibliotece-standardowej">Podpowiedzi dedukcyjne w bibliotece standardowej</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#deklaracje-using-w-variadic-templates">Deklaracje using w <em>variadic templates</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#parametry-szablonu-nie-bedace-typami-ze-specyfikatorem-auto">Parametry szablonu nie będące typami ze specyfikatorem <code class="docutils literal notranslate"><span class="pre">auto</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#variable-templates-ze-specyfikatorem-auto">Variable templates ze specyfikatorem auto</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fold-expressions.html#wyrazenia-fold-w-jezykach-funkcjonalnych">Wyrażenia <em>fold</em> w językach funkcjonalnych</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fold-expressions.html#redukcja-w-c-98-std-accumulate">Redukcja w C++98 - std::accumulate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fold-expressions.html#variadic-templates">Variadic templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fold-expressions.html#fold-expressions-w-c-17">Fold expressions w C++17</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fold-expressions.html#skladnia-wyrazen-fold">Składnia wyrażeń fold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fold-expressions.html#elementy-identycznosciowe">Elementy identycznościowe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fold-expressions.html#przyklady-zastosowan-wyrazen-fold-w-c-17">Przykłady zastosowań wyrażeń fold w C++17</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="string-view.html#roznice-miedzy-string-view-a-string">Różnice między string_view a string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string-view.html#konwersje-string-string-view">Konwersje string <code class="docutils literal notranslate"><span class="pre">&lt;-&gt;</span></code> string_view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string-view.html#uzycie-string-view-w-api-funkcji">Użycie string_view w API funkcji</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="any.html#interfejs-klasy-std-any">Interfejs klasy std::any</a></li>
+<li class="toctree-l3"><a class="reference internal" href="any.html#stosowanie-std-any">Stosowanie std::any</a></li>
+<li class="toctree-l3"><a class="reference internal" href="any.html#kontenery-heterogeniczne-z-std-any">Kontenery heterogeniczne z std::any</a></li>
+<li class="toctree-l3"><a class="reference internal" href="any.html#obiekty-typu-std-any-w-algorytmach-standardowych">Obiekty typu std::any w algorytmach standardowych</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#stosowanie-std-variant">Stosowanie std::variant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#problem-pustego-stanu">Problem pustego stanu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html#wizytowanie-wariantow">Wizytowanie wariantów</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#tag-pomocniczy-std-nullopt">Tag pomocniczy - std::nullopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#konstruktory">Konstruktory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#sprawdzenie-stanu">Sprawdzenie stanu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#dostep-do-przechowywanej-wartosci">Dostęp do przechowywanej wartości</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#semantyka-przenoszenia">Semantyka przenoszenia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#specjalne-przypadki">Specjalne przypadki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optional.html#case-study">Case Study</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html#podstawowe-pojecia-w-bibliotece-filesystem">Podstawowe pojęcia w bibliotece Filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html#podstawowe-obiekty-biblioteki-filesystem">Podstawowe obiekty biblioteki Filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html#iteracja-po-elementach-katalogu">Iteracja po elementach katalogu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html#modyfikacje-struktury-plikow-i-katalogow">Modyfikacje struktury plików i katalogów</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel-stl.html#lista-algorytmow-wspolbieznych">Lista algorytmów współbieżnych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-stl.html#funkcje-dostepu-do-danych">Funkcje dostępu do danych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-stl.html#wytyczne-wykonania-algorytmow-wspolbieznych">Wytyczne wykonania algorytmów współbieżnych</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-execution-sequenced-policy-obiekt-std-execution-seq">std::execution::sequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::seq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-execution-parallel-policy-obiekt-std-execution-par">std::execution::parallel_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-execution-parallel-unsequenced-policy-obiekt-std-execution-par-unseq">std::execution::parallel_unsequenced_policy - obiekt <code class="docutils literal notranslate"><span class="pre">std::execution::par_unseq</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-stl.html#wyjatki-w-algorytmach-wspolbieznych">Wyjątki w algorytmach współbieżnych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-stl.html#nowe-algorytmy-wspolbiezne">Nowe algorytmy współbieżne</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-reduce">std::reduce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-transform-reduce">std::transform_reduce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-exclusive-scan">std::exclusive_scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-inclusive-scan">std::inclusive_scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel-stl.html#std-transform-inclusive-scan-oraz-transform-exclusive-scan">std::transform_inclusive_scan oraz transform_exclusive_scan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="new-library-features.html#nowe-algorytmy-stl">Nowe algorytmy STL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#std-clamp">std::clamp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#std-sample">std::sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#std-search-opcje-wyszukiwania">std::search - opcje wyszukiwania</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="new-library-features.html#poprawki-dla-kontenerow-standardowych">Poprawki dla kontenerów standardowych</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#mniejsze-poprawki-w-api-kontenerow">Mniejsze poprawki w API kontenerów</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#transfer-wezlow-dla-zbiorow-i-map">Transfer węzłów dla zbiorów i map</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="new-library-features.html#nowe-funkcje-pomocnicze">Nowe funkcje pomocnicze</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#std-size-obj-std-empty-obj-std-data-obj">std::size(obj), std::empty(obj), std::data(obj)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#std-as-const-obj">std::as_const(obj)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="new-library-features.html#wielowatkowosc-w-c-17">Wielowątkowość w C++17</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#muteksy-wspoldzielone">Muteksy współdzielone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#std-scoped-lock">std::scoped_lock&lt;&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#std-atomic-t-is-always-lock-free">std::atomic&lt;T&gt;::is_always_lock_free</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-library-features.html#informacje-o-wielkosci-linii-cache-a-l1">Informacje o wielkości linii cache’a L1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="new-library-features.html#std-shared-ptr-t">std::shared_ptr&lt;T[]&gt;</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -405,11 +614,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="tdd.html"
+       href="stdcpp17.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Wstęp do TDD</p>
+        <p class="prev-next-title">C++17 - kompilatory</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

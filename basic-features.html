@@ -1,0 +1,1395 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Nowe elementy języka &#8212; Book title</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'basic-features';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Poprawki standardu (bugfixes)" href="core-fixes.html" />
+    <link rel="prev" title="C++17 - kompilatory" href="stdcpp17.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Book title - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Book title - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Programowanie w C++17
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template/issues/new?title=Issue%20on%20page%20%2Fbasic-features.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/basic-features.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nowe elementy języka</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-bindings">Structured bindings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typy-wiazan">Typy wiązań</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanizm-wiazania-structured-binding">Mechanizm wiązania <em>structured binding</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwalifikatory-dla-wiazan">Kwalifikatory dla wiązań</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantyka-przenoszenia">Semantyka przenoszenia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktyczne-wykorzystanie-structured-bindings">Praktyczne wykorzystanie <em>structured bindings</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcje-if-oraz-switch-z-sekcja-inicjujaca">Instrukcje if oraz switch z sekcją inicjującą</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obiekty-tymczasowe-w-sekcji-inicjujacej">Obiekty tymczasowe w sekcji inicjującej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-bindings-i-if-z-sekcja-inicjujaca">Structured bindings i if z sekcją inicjującą</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constexpr-if">constexpr if</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discarded-statements">Discarded statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanizm-kompilacji-szablonow">Mechanizm kompilacji szablonów</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmienne-inline">Zmienne inline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agregaty-w-c-17">Agregaty w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicja-agregatu-w-c-17">Definicja agregatu w C++17</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-value-optimization-copy-elision">Return Value Optimization &amp; Copy Elision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kategorie-wartosci-w-c-17">Kategorie wartości w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#materializacja-do-obiektu-tymczasowego">Materializacja do obiektu tymczasowego</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atrybuty">Atrybuty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zagniezdzone-przestrzenie-nazw">Zagnieżdżone przestrzenie nazw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statyczne-asercje-bez-komunikatow-o-bledach">Statyczne asercje bez komunikatów o błędach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambdy-w-c-17">Lambdy w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przechwytywanie-this">Przechwytywanie this</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambdy-constexpr">Lambdy constexpr</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly">Literały</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly-utf-8">Literały UTF-8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly-szesnastkowe">Literały szesnastkowe</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="nowe-elementy-jezyka">
+<h1>Nowe elementy języka<a class="headerlink" href="#nowe-elementy-jezyka" title="Permalink to this heading">#</a></h1>
+<section id="structured-bindings">
+<h2>Structured bindings<a class="headerlink" href="#structured-bindings" title="Permalink to this heading">#</a></h2>
+<p>W C++17 można zdefiniować i jednocześnie zainicjować wiele zmiennych przy pomocy tzw. <em>structured binding</em>.</p>
+<p>Typy zmiennych są dedukowane za pomocą mechanizmu <code class="docutils literal notranslate"><span class="pre">auto</span></code>.</p>
+<section id="typy-wiazan">
+<h3>Typy wiązań<a class="headerlink" href="#typy-wiazan" title="Permalink to this heading">#</a></h3>
+<p>Do realizacji wiązania mogą być użyte:</p>
+<ol class="arabic">
+<li><p>Wszystkie elementy tablicy</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">foo</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="o">&amp;</span><span class="p">)[</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">second</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+<li><p>Wszystkie elementy krotki lub obiektu kompatybilnego typu (np. std::pair, std::array)</p>
+<ul>
+<li><p>std::tuple</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tpl</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mf">2.3</span><span class="p">);</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">second</span><span class="p">,</span><span class="w"> </span><span class="n">third</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tpl</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">third</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>std::pair</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unique_numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_numbers</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">is_inserted</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique_numbers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">is_inserted</span><span class="p">)</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; has been inserted</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>std::array</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">get_data</span><span class="p">();</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_data</span><span class="p">();</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_data</span><span class="p">();</span><span class="w"> </span><span class="c1">// ERROR - number of items doesn&#39;t fit</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Takie wiązanie jest realizowane tylko jeśli <code class="docutils literal notranslate"><span class="pre">std::tuple_size&lt;E&gt;</span></code> jest typem
+kompletnym (<code class="docutils literal notranslate"><span class="pre">E</span></code> jest typem krotki lub kompatybilnego obiektu)</p>
+</li>
+<li><p>Wszystkie niestatyczne składowe obiektu klasy/struktury/unii</p>
+<ul class="simple">
+<li><p>wszystkie składowe muszą być publiczne i być bezpośrednio zdefiniowane w klasie/strukturze wiązanego obiektu lub
+w jego klasie bazowej</p></li>
+<li><p>anonimowe unie nie są dozwolone</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Data</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">//...</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="n">data1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">member1</span><span class="p">,</span><span class="w"> </span><span class="n">member2</span><span class="p">,</span><span class="w"> </span><span class="n">member3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data1</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">member1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">member2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">member3</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Jeśli liczba zmiennych umieszczonych w nawiasach <code class="docutils literal notranslate"><span class="pre">[]</span></code> nie zgadza się z liczbą
+składowych obiektu zwróconego, kompilator zgłasza błąd.</p>
+</section>
+<section id="mechanizm-wiazania-structured-binding">
+<h3>Mechanizm wiązania <em>structured binding</em><a class="headerlink" href="#mechanizm-wiazania-structured-binding" title="Permalink to this heading">#</a></h3>
+<p>Mechanizm działania wiązania <em>structured binding</em> wykorzystuje nową (anonimową) zmienną, a nowe identyfikatory wprowadzone w wiązaniu
+odwołują się do pól tej anonimowej zmiennej.</p>
+<p>Kod wiązania:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Timestamp</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">hours</span><span class="p">,</span><span class="w"> </span><span class="n">minutes</span><span class="p">,</span><span class="w"> </span><span class="n">seconds</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Timestamp</span><span class="w"> </span><span class="n">timestamp</span><span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">};</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Odpowiada koncepcyjnie:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">hours</span><span class="p">;</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">minutes</span><span class="p">;</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">seconds</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Obiekt <code class="docutils literal notranslate"><span class="pre">e</span></code> istnieje tak długo jak istnieją zdefiniowane do niego wiązania.</p>
+</section>
+<section id="kwalifikatory-dla-wiazan">
+<h3>Kwalifikatory dla wiązań<a class="headerlink" href="#kwalifikatory-dla-wiazan" title="Permalink to this heading">#</a></h3>
+<p>Deklaracje <em>structured bindings</em> mogą być dekorowane kwalifikatorami w postaci referencji, modyfikatorów <code class="docutils literal notranslate"><span class="pre">const</span></code> oraz <code class="docutils literal notranslate"><span class="pre">volatile</span></code>, <code class="docutils literal notranslate"><span class="pre">alignas</span></code>,
+przy czym dekoracja taka dotyczy całego anonimowego obiektu:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">rx</span><span class="p">,</span><span class="w"> </span><span class="n">ry</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// rx and ry refer to the elements in a</span>
+
+<span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// v and w have type const int, initialized by the elements of a</span>
+
+<span class="k">alignas</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="k">auto</span><span class="p">[</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"> </span><span class="c1">// id and pi refers to implicit entity, which is 128-byte aligned</span>
+
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="c1">// ERROR - cannot bind auto&amp; to rvalue std::tuple</span>
+
+<span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK</span>
+</pre></div>
+</div>
+</section>
+<section id="semantyka-przenoszenia">
+<h3>Semantyka przenoszenia<a class="headerlink" href="#semantyka-przenoszenia" title="Permalink to this heading">#</a></h3>
+<p>Aby przenieść obiekt do anonimowej zmiennej należy użyć następującej konstrukcji:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>W przypadku, kiedy użyjemy specyfikatora <code class="docutils literal notranslate"><span class="pre">auto&amp;&amp;</span></code>, obiekt <code class="docutils literal notranslate"><span class="pre">ts</span></code> wciąż, przechowuje dane, ponieważ obiekt tymczasowy jest
+referencją do r-value:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Timestamp</span><span class="w"> </span><span class="n">ts</span><span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span>
+
+<span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span><span class="w"> </span><span class="c1">// entity is a r-value ref to ts</span>
+</pre></div>
+</div>
+</section>
+<section id="praktyczne-wykorzystanie-structured-bindings">
+<h3>Praktyczne wykorzystanie <em>structured bindings</em><a class="headerlink" href="#praktyczne-wykorzystanie-structured-bindings" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><em>Structured bindings</em> umożliwiają wygodną iterację po mapach w C++17:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;pi&quot;</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;e&quot;</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mf">2.71</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Inicjalizacja wielu wartości na raz w instrukcji <code class="docutils literal notranslate"><span class="pre">for</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">begin</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">vec</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="instrukcje-if-oraz-switch-z-sekcja-inicjujaca">
+<h2>Instrukcje if oraz switch z sekcją inicjującą<a class="headerlink" href="#instrukcje-if-oraz-switch-z-sekcja-inicjujaca" title="Permalink to this heading">#</a></h2>
+<p>W C++17 wprowadzono dodatkową składnię dla instrukcji <code class="docutils literal notranslate"><span class="pre">if</span></code> oraz <code class="docutils literal notranslate"><span class="pre">switch</span></code> umożliwiającą zgrupowanie instrukcji inicjującej oraz sprawdzającej warunek.</p>
+<p>Nowa (dodatkowa) składnia:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">init</span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{}</span>
+
+<span class="k">switch</span><span class="p">(</span><span class="n">init</span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{}</span>
+</pre></div>
+</div>
+<p>W efekcie kod, który w C++98 wyglądał tak:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">status</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">bad</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Gadget is broken(status=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>możemy zastąpić bardziej zwięzłym kodem:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Status</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">status</span><span class="p">();</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Status</span><span class="o">::</span><span class="n">bad</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Gadget is broken(status=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Przykład wykorzystania nowej wersji instrukcji <code class="docutils literal notranslate"><span class="pre">if</span></code> w pracy z muteksami:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lk</span><span class="p">{</span><span class="n">mtx</span><span class="p">};</span><span class="w"> </span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Instrukcja <code class="docutils literal notranslate"><span class="pre">switch</span></code> z nową składnią:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">Gadget</span><span class="w"> </span><span class="n">g</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="n">status</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="k">case</span><span class="w"> </span><span class="no">Status</span><span class="o">::</span><span class="no">on</span><span class="p">:</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Gadget is on&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="k">case</span><span class="w"> </span><span class="no">Status</span><span class="o">::</span><span class="no">off</span><span class="p">:</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Gadget is off&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="k">case</span><span class="w"> </span><span class="no">Status</span><span class="o">::</span><span class="no">bad</span><span class="p">:</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Gadget is broken&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="obiekty-tymczasowe-w-sekcji-inicjujacej">
+<h3>Obiekty tymczasowe w sekcji inicjującej<a class="headerlink" href="#obiekty-tymczasowe-w-sekcji-inicjujacej" title="Permalink to this heading">#</a></h3>
+<p>Obiekt tymczasowy utworzony na potrzeby inicjalizacji istnieje tylko w obrębie sekcji
+inicjującej (tak jak w pętli <code class="docutils literal notranslate"><span class="pre">for</span></code>).</p>
+<p>Przykład z <em>bugiem</em>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="p">(</span><span class="n">mtx</span><span class="p">);</span><span class="w"> </span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="c1">// ERROR - locks ends before ;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Poprawiony kod:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_</span><span class="p">(</span><span class="n">mtx</span><span class="p">);</span><span class="w"> </span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="c1">// OK - lock has name</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>lub</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="w"> </span><span class="n">lk</span><span class="p">(</span><span class="n">mtx</span><span class="p">);</span><span class="w"> </span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="structured-bindings-i-if-z-sekcja-inicjujaca">
+<h3>Structured bindings i if z sekcją inicjującą<a class="headerlink" href="#structured-bindings-i-if-z-sekcja-inicjujaca" title="Permalink to this heading">#</a></h3>
+<p>Instrukcja <code class="docutils literal notranslate"><span class="pre">if</span></code> z sekcją inicjującą może być połączona z przypisaniem wielu wartości do zmiennych za pomocą <em>structured bindings</em>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dictionary</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">is_inserted</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dictionary</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pair</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fourty two&quot;</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="o">!</span><span class="n">is_inserted</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is already in a dictionary&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="constexpr-if">
+<h2>constexpr if<a class="headerlink" href="#constexpr-if" title="Permalink to this heading">#</a></h2>
+<p>C++17 wprowadza do standardu C++ nową postać instrukcji warunkowej <code class="docutils literal notranslate"><span class="pre">if</span></code>, która działa na etapie kompilacji - tzw. <code class="docutils literal notranslate"><span class="pre">constexpr</span> <span class="pre">if</span></code>.</p>
+<p>Działanie <code class="docutils literal notranslate"><span class="pre">constexpr</span> <span class="pre">if</span></code> polega na wyborze podczas kompilacji bloku instrukcji <code class="docutils literal notranslate"><span class="pre">then</span></code>/<code class="docutils literal notranslate"><span class="pre">else</span></code> w zależności od warunku, który jest wyrażeniem <code class="docutils literal notranslate"><span class="pre">constexpr</span></code>.</p>
+<p>Składnia:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">constexpr</span> <span class="pre">if</span></code> umożliwia znaczne uproszczenie kodu szablonowego, który bardzo często w C++11 był mocno skomplikowany.</p>
+<p>Przykład w C++11:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">compute</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">enable_if_t</span><span class="o">&lt;</span><span class="n">supportsAPI</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">optimized_computation</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">compute</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">enable_if_t</span><span class="o">&lt;!</span><span class="n">supportsAPI</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">generic_computation</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Powyższy kod może być dużo prościej wyrażony w C++17 za pomocą <code class="docutils literal notranslate"><span class="pre">constexpr</span> <span class="pre">if</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">compute</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="p">(</span><span class="n">supportsAPI</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">optimized_computation</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">generic_computation</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="discarded-statements">
+<h3>Discarded statements<a class="headerlink" href="#discarded-statements" title="Permalink to this heading">#</a></h3>
+<p>Kod (grupa instrukcji), który jest ominięty przy kompilacji (tzw. <em>discarded statement</em>), nie jest instancjonowany, ale musi być poprawny składniowo.
+Mechanizm <em>constexpr if</em> zasadniczo odpowiada pierwszemu etapowi przetwarzania szablonów przez kompilator (faza definicji).</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">foo</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">obj</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">f_with_discarded_statements</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">is_signed</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">foo</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+<span class="w">        </span><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">is_signed</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;char is unsigned&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// always fails if char is unsigned</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">undeclared</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w">  </span><span class="c1">// always error if undeclared() not declared</span>
+<span class="w">        </span><span class="k">static_assert</span><span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;::</span><span class="n">is_signed</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;char is signed&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// always fails if char is signed</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Powyższy kod nigdy się nie skompiluje.</p>
+</section>
+<section id="mechanizm-kompilacji-szablonow">
+<h3>Mechanizm kompilacji szablonów<a class="headerlink" href="#mechanizm-kompilacji-szablonow" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Faza pierwsza:</p>
+<ul class="simple">
+<li><p>wykrywane są błędy składniowe</p></li>
+<li><p>użycie nieznanych typów, funkcji, itp. generuje błąd kompilacji</p></li>
+<li><p>sprawdzane są statyczne asercje</p></li>
+</ul>
+</li>
+<li><p>Faza druga:</p>
+<ul class="simple">
+<li><p>kod zależny od parametru szablonu jest podwójnie sprawdzany</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">foo</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">undeclared</span><span class="p">();</span>
+<span class="w">    </span><span class="n">undeclared</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;small int&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1st phase error if sizeof(int) &lt;= 4</span>
+<span class="w">    </span><span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;small T&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2nd phase error if sizeof(T) &lt;= 4</span>
+<span class="w">    </span><span class="k">static_assert</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// always fails when template is compiled (even if not called)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zmienne-inline">
+<h2>Zmienne inline<a class="headerlink" href="#zmienne-inline" title="Permalink to this heading">#</a></h2>
+<p>W C++17 statyczne zmienne oznaczone jako <code class="docutils literal notranslate"><span class="pre">inline</span></code> są uznawane jako definicja takiej zmiennej w programie.</p>
+<ul class="simple">
+<li><p>gwarantowana jest jednokrotna definicja zmiennej nawet wtedy, gdy nagłówek z definicją jest włączany w wielu jednostkach translacji</p></li>
+<li><p>nie musimy tworzyć pliku <em>cpp</em> tylko na potrzeby definicji zmiennych globalnych/statycznych</p></li>
+<li><p>Plik <code class="docutils literal notranslate"><span class="pre">gadget.hpp</span></code></p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Gadget</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">counter_</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Gadget</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">++</span><span class="n">counter_</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Gadget</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Gadget</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Gadget</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Gadget</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+
+<span class="w">    </span><span class="o">~</span><span class="n">Gadget</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">--</span><span class="n">counter_</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">counter_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">class_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Gadget&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Plik <code class="docutils literal notranslate"><span class="pre">a.cpp</span></code></p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gadget.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;No of gadgets: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">Gadget</span><span class="o">::</span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Plik <code class="docutils literal notranslate"><span class="pre">b.cpp</span></code></p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gadget.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">bootstrap</span><span class="p">(</span><span class="n">GadgetFactory</span><span class="o">&amp;</span><span class="w"> </span><span class="n">gf</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">gf</span><span class="p">.</span><span class="k">register</span><span class="p">(</span><span class="n">Gadget</span><span class="o">::</span><span class="n">class_id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Gadget</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Zmienne statyczne <code class="docutils literal notranslate"><span class="pre">inline</span></code> mogą być:</p>
+<ul class="simple">
+<li><p>inicjalizowane przed funkcją <code class="docutils literal notranslate"><span class="pre">main()</span></code> lub przed pierwszym użyciem</p></li>
+<li><p>mogą być <code class="docutils literal notranslate"><span class="pre">thread_local</span></code></p></li>
+<li><p>modyfikator <code class="docutils literal notranslate"><span class="pre">constexpr</span></code> implikuje, że zmienna statyczna jest <code class="docutils literal notranslate"><span class="pre">inline</span></code></p></li>
+</ul>
+<p>Przykład (plik <code class="docutils literal notranslate"><span class="pre">monitor.hpp</span></code>):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Monitor</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Monitor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="k">thread_local</span><span class="w"> </span><span class="n">Monitor</span><span class="w"> </span><span class="n">global_monitor</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="agregaty-w-c-17">
+<h2>Agregaty w C++17<a class="headerlink" href="#agregaty-w-c-17" title="Permalink to this heading">#</a></h2>
+<p>C++17 rozszerza definicję agregatu:</p>
+<ul class="simple">
+<li><p>Agregaty w C++17 mogą posiadać klasy bazowe, po których dziedziczą publicznie</p></li>
+<li><p>Inicjalizacja jest możliwa za pomocą zagnieżdżonych klamr <code class="docutils literal notranslate"><span class="pre">{}</span></code></p></li>
+<li><p>Biblioteka standardowa dostarcza nową cechę (<em>trait</em>) - <code class="docutils literal notranslate"><span class="pre">is_aggregate&lt;T&gt;</span></code></p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Base1</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Base2</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Base2</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">b3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b3</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Base1</span><span class="p">,</span><span class="w"> </span><span class="n">Base2</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Derived</span><span class="w"> </span><span class="n">d1</span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c1">// d1.b1 = 1,  d1.b2 = 2, d1.b3 = 42, d1.d = 4</span>
+<span class="n">Derived</span><span class="w"> </span><span class="n">d2</span><span class="p">{{},</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c1">// d2.b1 = 0, d2.b2 = 42, d2.b3 = 42, d2.d = 4</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Klasy bazowe oraz składowe agregatów nie muszą być w C++17 agregatami (znaczne obniżenie wymagań)</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Aggregate</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Aggregate</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">agg1</span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;aggregate&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="mf">6.7</span><span class="p">},</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<section id="definicja-agregatu-w-c-17">
+<h3>Definicja agregatu w C++17<a class="headerlink" href="#definicja-agregatu-w-c-17" title="Permalink to this heading">#</a></h3>
+<p>C++17 definiuje agregat jako:</p>
+<ul>
+<li><p>tablicę</p></li>
+<li><p>lub klasę(<code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">struct</span></code>, lub <code class="docutils literal notranslate"><span class="pre">union</span></code>), która:</p>
+<p>– nie posiada konstruktorów <code class="docutils literal notranslate"><span class="pre">explicit</span></code> lub zdefiniowanych przez użytkownika</p>
+<p>– nie posiada konstruktorów odziedziczonych deklaracją <code class="docutils literal notranslate"><span class="pre">using</span></code></p>
+<p>– nie posiada prywatnych lub chronionych niestatycznych danych składowych</p>
+<p>– nie posiada wirtualnych funkcji składowych</p>
+<p>– nie posiada wirtualnych, prywatnych lub chronionych klas bazowych</p>
+</li>
+</ul>
+<p>Dodatkowo, inicjalizacja agregatu, nie może wykorzystywać prywatnych lub chronionych konstruktorów klasy bazowej.</p>
+</section>
+</section>
+<section id="return-value-optimization-copy-elision">
+<h2>Return Value Optimization &amp; Copy Elision<a class="headerlink" href="#return-value-optimization-copy-elision" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>W C++17 wymagane jest, aby inicjalizacja zmiennych z wartości tymczasowych (<em>prvalue</em>) wykorzystywała
+mechanizm <em>copy elision</em>.</p></li>
+<li><p>W rezultacie istnienie konstruktorów kopiujących lub przenoszących dla klasy nie jest
+wymagane jeśli chcemy:</p>
+<ul>
+<li><p>zwrócić tymczasowy obiekt z funkcji</p></li>
+<li><p>przekazać obiekt tymczasowy jako argument wywołania funkcji</p></li>
+</ul>
+</li>
+</ul>
+<p>Przykład:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CopyMoveDisabled</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CopyMoveDisabled</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="p">{</span><span class="n">value</span><span class="p">}</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="n">CopyMoveDisabled</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CopyMoveDisabled</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CopyMoveDisabled</span><span class="p">(</span><span class="n">CopyMoveDisabled</span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>Copy elision</em> dla zwracanych wartości:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CopyMoveDisabled</span><span class="w"> </span><span class="nf">copy_elided</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CopyMoveDisabled</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">CopyMoveDisabled</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">copy_elided</span><span class="p">();</span><span class="w"> </span><span class="c1">// OK since C++17</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>Copy elision</em> dla argumentów funkcji:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">copy_elided</span><span class="p">(</span><span class="n">CopyMoveDisabled</span><span class="w"> </span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;arg: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">arg</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">copy_elided</span><span class="p">(</span><span class="n">CopyMoveDisabled</span><span class="p">{</span><span class="mi">665</span><span class="p">});</span><span class="w"> </span><span class="c1">// OK since C++17</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wciąż <strong>nie jest wymagana</strong> optymalizacja kopiowań dla NRVO (gdy zwracane są lokalne obiekty)</p>
+</div>
+<section id="kategorie-wartosci-w-c-17">
+<h3>Kategorie wartości w C++17<a class="headerlink" href="#kategorie-wartosci-w-c-17" title="Permalink to this heading">#</a></h3>
+<img alt="_images/expression-categories-cpp-17.svg" class="align-center" src="_images/expression-categories-cpp-17.svg" /><p>W C++17 każde wyrażenie należy do jednej z kategorii:</p>
+<ul class="simple">
+<li><p><strong>glvalue</strong> - <em>generalized lvalue</em></p></li>
+<li><p><strong>lvalue</strong> - lokalizowalna wartość</p>
+<ul>
+<li><p>zmienna, pole obiektu, funkcja, zwrócona referencja do lvalue</p></li>
+<li><p>może stać po lewej stronie operatora przypisania (jeśli nie jest stałą)</p></li>
+</ul>
+</li>
+<li><p><strong>rvalue</strong> - <em>generalized rvalue</em></p></li>
+<li><p><strong>prvalue</strong> - wykonuje inicjalizację</p>
+<ul>
+<li><p>literały, <code class="docutils literal notranslate"><span class="pre">this</span></code>, lambda, zwrócona z funkcji wartość, efekt wywołania konstruktora</p></li>
+<li><p>nie powoduje powstania obiektu tymczasowego</p></li>
+</ul>
+</li>
+<li><p><strong>xvalue</strong> - <em>eXpiring value</em></p>
+<ul>
+<li><p>zwrócona referencja do rvalue (np. efekt wywołania <code class="docutils literal notranslate"><span class="pre">std::move()</span></code>)</p></li>
+</ul>
+</li>
+</ul>
+<section id="materializacja-do-obiektu-tymczasowego">
+<h4>Materializacja do obiektu tymczasowego<a class="headerlink" href="#materializacja-do-obiektu-tymczasowego" title="Permalink to this heading">#</a></h4>
+<p>Konwersja <strong>prvalue-to-xvalue</strong>:</p>
+<ul class="simple">
+<li><p>przy wiązaniu do referencji</p></li>
+<li><p>przy próbie dostępu do składowej</p></li>
+<li><p>przy konwersji do klasy bazowej</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">MyClass</span><span class="w"> </span><span class="nf">create</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MyClass</span><span class="p">();</span><span class="w"> </span><span class="c1">// returns prvalue (no temporary object yet)</span>
+<span class="p">}</span>
+
+<span class="n">MyClass</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create</span><span class="p">();</span><span class="w"> </span><span class="c1">// uses prvalue for initialization</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">call_v</span><span class="p">(</span><span class="n">MyClass</span><span class="w"> </span><span class="n">obj</span><span class="p">);</span><span class="w"> </span><span class="c1">// accepts any value category</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">call_r</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MyClass</span><span class="o">&amp;</span><span class="w"> </span><span class="n">obj</span><span class="p">);</span><span class="w"> </span><span class="c1">// requires glvalue</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">call_m</span><span class="p">(</span><span class="n">MyClass</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">obj</span><span class="p">);</span><span class="w"> </span><span class="c1">// requires xvalue (may be materialized from prvalue)</span>
+
+<span class="n">call_v</span><span class="p">(</span><span class="n">create</span><span class="p">());</span><span class="w"> </span><span class="c1">// passes prvalue and uses it for initialization of obj</span>
+<span class="n">call_r</span><span class="p">(</span><span class="n">create</span><span class="p">());</span><span class="w"> </span><span class="c1">// passes prvalue (materialized as xvalue)</span>
+<span class="n">call_m</span><span class="p">(</span><span class="n">create</span><span class="p">());</span><span class="w"> </span><span class="c1">// passes prvalue(materialized as xvalue)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="atrybuty">
+<h2>Atrybuty<a class="headerlink" href="#atrybuty" title="Permalink to this heading">#</a></h2>
+<p>Standard C++17 wprowadza kilka nowych atrybutów, które umożliwiają lepszą kontrolę nad
+interpretacją kodu przez kompilator:</p>
+<ul>
+<li><p>atrybut <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">nodiscard</span> <span class="pre">]]</span></code></p>
+<ul class="simple">
+<li><p>wymusza zgłoszenie ostrzeżenia w przypadku, gdy zwracana wartość nie jest użyta</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+<span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span><span class="w"> </span><span class="n">future</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">F</span><span class="p">())</span><span class="o">&gt;</span><span class="w"> </span><span class="n">async</span><span class="p">(</span><span class="n">F</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...);</span>
+</pre></div>
+</div>
+</li>
+<li><p>atrybut <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">maybe_unused</span> <span class="pre">]]</span></code></p>
+<ul>
+<li><p>dezaktywuje ostrzeżenia o nieużywanej zmiennej, jeśli taka jest intencja programisty</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">maybe_unused</span><span class="p">]]</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>atrybut <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">fallthrough</span> <span class="pre">]]</span></code></p>
+<ul class="simple">
+<li><p>używany w instrukcji <code class="docutils literal notranslate"><span class="pre">switch</span></code>, gdy wybrana etykieta <code class="docutils literal notranslate"><span class="pre">case</span></code> zawiera instrukcje, ale nie kończy się
+instrukcją <code class="docutils literal notranslate"><span class="pre">break</span></code></p></li>
+<li><p>musi poprzedzać inną etykietę  <code class="docutils literal notranslate"><span class="pre">case</span></code> (jeśli nie, kod jest <em>illformed</em>)</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+<span class="w">          </span><span class="n">step1</span><span class="p">();</span>
+<span class="w">          </span><span class="p">[[</span><span class="n">fallthrough</span><span class="p">]];</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="c1">// no warning on fallthrough</span>
+<span class="w">          </span><span class="n">step2</span><span class="p">();</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="c1">// compiler may warn on fallthrough</span>
+<span class="w">          </span><span class="n">step3</span><span class="p">();</span>
+<span class="w">          </span><span class="p">[[</span><span class="n">fallthrough</span><span class="p">]];</span><span class="w"> </span><span class="c1">// ill­formed, not before a case label</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>atrybut <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">deprecated</span> <span class="pre">]]</span></code> może być stosowany dla przestrzeni nazw oraz wyliczeń:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">Coffee</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">espresso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="n">americano</span><span class="w"> </span><span class="p">[[</span><span class="n">deprecated</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">espresso</span>
+<span class="p">};</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="p">[[</span><span class="nn">deprecated</span><span class="p">]]</span><span class="w"> </span><span class="nn">LegacyCode</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>deklaracja <code class="docutils literal notranslate"><span class="pre">using</span></code> dla atrybutów</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="k">using</span><span class="w"> </span><span class="n">CC</span><span class="o">:</span><span class="w"> </span><span class="n">opt</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">debug</span><span class="p">]]</span><span class="w"> </span><span class="c1">// same as [[CC::opt(1), CC::debug]]</span>
+<span class="p">[[</span><span class="k">using</span><span class="w"> </span><span class="n">CC</span><span class="o">:</span><span class="w"> </span><span class="n">CC</span><span class="o">::</span><span class="n">opt</span><span class="p">(</span><span class="mi">1</span><span class="p">)]]</span><span class="w"> </span><span class="c1">// error: cannot combine using and scoped attribute</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="zagniezdzone-przestrzenie-nazw">
+<h2>Zagnieżdżone przestrzenie nazw<a class="headerlink" href="#zagniezdzone-przestrzenie-nazw" title="Permalink to this heading">#</a></h2>
+<p>Dozwolona jest nowa składnia przy zagnieżdżaniu przestrzeni nazw.</p>
+<ul>
+<li><p>Zamiast:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">A</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">namespace</span><span class="w"> </span><span class="nn">B</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">namespace</span><span class="w"> </span><span class="nn">C</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>można napisać:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">A</span><span class="o">::</span><span class="nn">B</span><span class="o">::</span><span class="nn">C</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="statyczne-asercje-bez-komunikatow-o-bledach">
+<h2>Statyczne asercje bez komunikatów o błędach<a class="headerlink" href="#statyczne-asercje-bez-komunikatow-o-bledach" title="Permalink to this heading">#</a></h2>
+<p>Od C++17 <code class="docutils literal notranslate"><span class="pre">static_assert()</span></code> nie wymaga przekazania komunikatu o błędzie. Jeśli asercja nie jest zaliczona,
+wyświetlany jest komunikat domyślny.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;integers are to small&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// OK since C++11</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK since C++17</span>
+</pre></div>
+</div>
+</section>
+<section id="lambdy-w-c-17">
+<h2>Lambdy w C++17<a class="headerlink" href="#lambdy-w-c-17" title="Permalink to this heading">#</a></h2>
+<section id="przechwytywanie-this">
+<h3>Przechwytywanie this<a class="headerlink" href="#przechwytywanie-this" title="Permalink to this heading">#</a></h3>
+<p>Można użyć trzech opcji, aby przechwycić wskaźnik <code class="docutils literal notranslate"><span class="pre">this</span></code> w funkcjach składowych:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Gadget</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name_</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="n">do_sth</span><span class="p">()</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">       </span><span class="n">execute</span><span class="p">([]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// ERROR - this is not captured</span>
+<span class="w">       </span><span class="n">execute</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// OK - this captured implicitly by &amp;</span>
+<span class="w">       </span><span class="n">execute</span><span class="p">([</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// OK - this captured implicitly by =</span>
+<span class="w">       </span><span class="n">execute</span><span class="p">([</span><span class="k">this</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// OK - this captured explicitly</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Od C++17 przy pomocy <code class="docutils literal notranslate"><span class="pre">*this</span></code> możemy przechwycić kopię obiektu:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">execute</span><span class="p">([</span><span class="o">*</span><span class="k">this</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">OK</span><span class="w"> </span><span class="n">since</span><span class="w"> </span><span class="n">C</span><span class="o">++</span><span class="mi">17</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="o">*</span><span class="k">this</span>
+</pre></div>
+</div>
+</section>
+<section id="lambdy-constexpr">
+<h3>Lambdy constexpr<a class="headerlink" href="#lambdy-constexpr" title="Permalink to this heading">#</a></h3>
+<p>Od C++17 wyrażenia lambda są traktowane domyślnie jako wyrażenia <code class="docutils literal notranslate"><span class="pre">constexpr</span></code> (jeśli jest to możliwe).
+Można explicite zastosować również słowo kluczowe <code class="docutils literal notranslate"><span class="pre">constexpr</span></code> w definicji lambdy.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">squared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// implicitly consexpr</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">squared</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">arr1</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK - array&lt;int, 64&gt;</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">squared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// OK - since C++17</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Jeśli w definicji wyrażenia lambda nie są spełnione wymagania dla wyrażeń <code class="docutils literal notranslate"><span class="pre">constexpr</span></code>, to kompilator:</p>
+<ul>
+<li><p>domyślnie przyjmie, że definicja lambdy nie jest <code class="docutils literal notranslate"><span class="pre">constexpr</span></code></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">is_even</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span><span class="w"> </span><span class="c1">// OK - but not constexpr</span>
+</pre></div>
+</div>
+</li>
+<li><p>lub w przypadku jawnej deklaracji <code class="docutils literal notranslate"><span class="pre">constexpr</span></code> zgłosi błąd kompilacji</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">is_even</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span><span class="w"> </span><span class="c1">// ERROR - lambda expression is not constexpr</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="literaly">
+<h2>Literały<a class="headerlink" href="#literaly" title="Permalink to this heading">#</a></h2>
+<section id="literaly-utf-8">
+<h3>Literały UTF-8<a class="headerlink" href="#literaly-utf-8" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Prefix <code class="docutils literal notranslate"><span class="pre">u8</span></code> dla znaku umożliwia zdefiniowanie znaku w kodowaniu UTF-8</p>
+<ul>
+<li><p>typ <code class="docutils literal notranslate"><span class="pre">char</span></code></p></li>
+<li><p>literał może mieć tylko jeden znak (np. ASCII)</p></li>
+<li><p>wartość jest równa kodowi znaku UTF-8 wg normy ISO 10646</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">u8</span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// char &#39;a&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="literaly-szesnastkowe">
+<h3>Literały szesnastkowe<a class="headerlink" href="#literaly-szesnastkowe" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Prefix <code class="docutils literal notranslate"><span class="pre">0x</span></code> definiuje literały szesnastkowe również dla typów zmiennoprzecinkowych (tak jak w C99)</p>
+<ul>
+<li><p>mantysa jest podawana szesnastkowo</p></li>
+<li><p>eksponenta jest podawana w notacji dziesiętnej (zmiennoprzecinkowej) i jest potęgą 2</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">hex1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xA</span><span class="p">;</span><span class="w"> </span><span class="c1">// int: 10</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">hex2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0x1p4</span><span class="p">;</span><span class="w"> </span><span class="c1">// double: 1 * 2^4 = 16</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">hex3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0x1.4p+2</span><span class="p">;</span><span class="w"> </span><span class="c1">// double: 5</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">hex4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0xC.68p+2</span><span class="p">;</span><span class="w"> </span><span class="c1">// double: 49.625</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="stdcpp17.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">C++17 - kompilatory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="core-fixes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Poprawki standardu (bugfixes)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-bindings">Structured bindings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typy-wiazan">Typy wiązań</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanizm-wiazania-structured-binding">Mechanizm wiązania <em>structured binding</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwalifikatory-dla-wiazan">Kwalifikatory dla wiązań</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantyka-przenoszenia">Semantyka przenoszenia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktyczne-wykorzystanie-structured-bindings">Praktyczne wykorzystanie <em>structured bindings</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcje-if-oraz-switch-z-sekcja-inicjujaca">Instrukcje if oraz switch z sekcją inicjującą</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obiekty-tymczasowe-w-sekcji-inicjujacej">Obiekty tymczasowe w sekcji inicjującej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-bindings-i-if-z-sekcja-inicjujaca">Structured bindings i if z sekcją inicjującą</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constexpr-if">constexpr if</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discarded-statements">Discarded statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanizm-kompilacji-szablonow">Mechanizm kompilacji szablonów</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmienne-inline">Zmienne inline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agregaty-w-c-17">Agregaty w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicja-agregatu-w-c-17">Definicja agregatu w C++17</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-value-optimization-copy-elision">Return Value Optimization &amp; Copy Elision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kategorie-wartosci-w-c-17">Kategorie wartości w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#materializacja-do-obiektu-tymczasowego">Materializacja do obiektu tymczasowego</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atrybuty">Atrybuty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zagniezdzone-przestrzenie-nazw">Zagnieżdżone przestrzenie nazw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statyczne-asercje-bez-komunikatow-o-bledach">Statyczne asercje bez komunikatów o błędach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lambdy-w-c-17">Lambdy w C++17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#przechwytywanie-this">Przechwytywanie this</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambdy-constexpr">Lambdy constexpr</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly">Literały</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly-utf-8">Literały UTF-8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly-szesnastkowe">Literały szesnastkowe</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś - Infotraining
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

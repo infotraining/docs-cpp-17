@@ -1,0 +1,711 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Biblioteka Filesystem &#8212; Book title</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'filesystem';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Algorytmy współbieżne STL" href="parallel-stl.html" />
+    <link rel="prev" title="Klasa std::optional" href="optional.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Book title - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Book title - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Programowanie w C++17
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template/issues/new?title=Issue%20on%20page%20%2Ffilesystem.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/filesystem.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Biblioteka Filesystem</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podstawowe-pojecia-w-bibliotece-filesystem">Podstawowe pojęcia w bibliotece Filesystem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podstawowe-obiekty-biblioteki-filesystem">Podstawowe obiekty biblioteki Filesystem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteracja-po-elementach-katalogu">Iteracja po elementach katalogu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modyfikacje-struktury-plikow-i-katalogow">Modyfikacje struktury plików i katalogów</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="biblioteka-filesystem">
+<h1>Biblioteka Filesystem<a class="headerlink" href="#biblioteka-filesystem" title="Permalink to this heading">#</a></h1>
+<p>C++17 dodaje do standardu bibliotekę umożliwiającą cross-platformową obsługę systemu plików.
+Specyfikacja standardu powstała na bazie <em>Boost.Filesystem</em> uwzględniając kompatybilność z innymi elementami standardu oraz dostarczając
+kilka brakujących elementów.</p>
+<ul class="simple">
+<li><p>Nagłówek <code class="docutils literal notranslate"><span class="pre">&lt;filesystem&gt;</span></code></p></li>
+</ul>
+<section id="podstawowe-pojecia-w-bibliotece-filesystem">
+<h2>Podstawowe pojęcia w bibliotece Filesystem<a class="headerlink" href="#podstawowe-pojecia-w-bibliotece-filesystem" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>plik</strong> (<em>file</em>) - obiekt systemu plików, który przechowuje dane, używany do odczytu i/lub zapisu. Plik ma nazwy i atrybuty. Jednym z atrybutów jest typ pliku:</p>
+<ul>
+<li><p><strong>katalog</strong> (<em>directory</em>) - plik, który jest kontenerem dla innych obiektów plikowych tzw. <em>directory entry</em> (plików, katalogów, itp.). W kontekście konkretnego pliku,
+katalog, w którym znajduje się ten obiekt, to tzw. <strong>katalog rodzica</strong> (<em>parent directory</em>) i jest reprezentowany przez symbol <code class="docutils literal notranslate"><span class="pre">..</span></code>)</p></li>
+<li><p><strong>trwały link</strong> (<em>hard link</em>) - obiekt katalogu, który wiąże nazwę z istniejącym plikiem. Jeśli system wspiera trwałe odnośniki, plik jest usuwany, jeśli zostaną usunięte wszystkie trwałe odnośniki</p></li>
+<li><p><strong>link symboliczny</strong> (<em>symbolic link</em>) - obiekt katalogowy, który wiąże nazwę ze ścieżką, która istnieje lub nie</p></li>
+<li><p><strong>regularny plik</strong> (<em>regular file</em>) - plik, który nie jest jednym z powyżej zdefiniowanych rodzajów plików</p></li>
+</ul>
+</li>
+<li><p><strong>nazwa pliku</strong> (<em>filename</em>) - ciąg znaków, który określa nazwę pliku. Nazwy <code class="docutils literal notranslate"><span class="pre">.</span></code> oraz <code class="docutils literal notranslate"><span class="pre">..</span></code> mają specjalne znaczenie w bibliotece</p></li>
+<li><p><strong>ścieżka</strong> (<em>path</em>) - sekwencja elementów identyfikująca plik. Składa się z:</p>
+<ul>
+<li><p><em>root name</em> - <code class="docutils literal notranslate"><span class="pre">C:</span></code> lub <code class="docutils literal notranslate"><span class="pre">//server</span></code></p></li>
+<li><p><em>root directory</em> - <code class="docutils literal notranslate"><span class="pre">/</span></code> w Uniksie</p></li>
+<li><p><em>relative path</em> - sekwencji nazw plików, gdzie wszystkie poza ostatnią muszą być katalogami lub linkami do katalogów</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Separator katalogów</strong> (<em>directory separator</em>) - ‘/` lub ‘` lub ‘//` lub ‘\`</p>
+<p>Typy ścieżek:</p>
+<ul class="simple">
+<li><p><strong>absolutna</strong> (<em>absolut path</em>) - ścieżka, która jednoznacznie identyfikuje lokalizację pliku</p></li>
+<li><p><strong>kanoniczna</strong> (<em>canonical path</em>) - ścieżka absolutna, która nie zawiera linków symbolicznych, <cite>.</cite> lub <code class="docutils literal notranslate"><span class="pre">..</span></code></p></li>
+<li><p><strong>względna</strong> (<em>relative path</em>) - ścieżka, która identyfikuje lokalizację pliku w odniesieniu do danej lokalizacji w systemie plików</p></li>
+</ul>
+</section>
+<section id="podstawowe-obiekty-biblioteki-filesystem">
+<h2>Podstawowe obiekty biblioteki Filesystem<a class="headerlink" href="#podstawowe-obiekty-biblioteki-filesystem" title="Permalink to this heading">#</a></h2>
+<p>Klasa <code class="docutils literal notranslate"><span class="pre">std::filesystem::path</span></code> określa ścieżkę dostępu i definiuje kilka typów pomocniczych:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value_type</span></code> - określa typ znaku wykorzystanego do definicji ścieżki (<code class="docutils literal notranslate"><span class="pre">char</span></code> w POSIX, <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> w systemie Windows)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string_type</span></code> - alias dla <code class="docutils literal notranslate"><span class="pre">std::basic_string&lt;value_type&gt;</span></code></p></li>
+</ul>
+<p>Statyczna stała <code class="docutils literal notranslate"><span class="pre">prefered_separartor</span></code> określa typ separatora w ścieżkach (<code class="docutils literal notranslate"><span class="pre">/</span></code> lub <code class="docutils literal notranslate"><span class="pre">\</span></code>)</p>
+<p>Najczęściej wykorzystywane metody klasy:</p>
+<ul>
+<li><p>Funkcje składowe dekompozycji ścieżki</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span><span class="w">                                               </span><span class="c1">//  UNIX                      WINDOWS</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">pth1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">{</span><span class="s">&quot;foo&quot;</span><span class="p">}</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pth1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">                       </span><span class="c1">//  &quot;foo/bar&quot;                 &quot;foo\bar&quot;</span>
+
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">p</span><span class="p">{</span><span class="s">&quot;/foo/bar/data.txt&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">                          </span><span class="c1">//  &quot;/foo/bar/data.txt&quot;       &quot;\foo\bar\data.txt&quot;</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;decomposition:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">root_name</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">              </span><span class="c1">//  &quot;&quot;                        &quot;&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">root_directory</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">         </span><span class="c1">//  &quot;/&quot;                       &quot;\&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">root_path</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">              </span><span class="c1">//  &quot;/&quot;                       &quot;\&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">relative_path</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">          </span><span class="c1">//  &quot;foo/bar/data.txt&quot;        &quot;foo\bar\data.txt&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">parent_path</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">            </span><span class="c1">//  &quot;/foo/bar&quot;                &quot;\foo\bar&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">file_name</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">              </span><span class="c1">//  &quot;data.txt&quot;                &quot;data.txt&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">stem</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">                   </span><span class="c1">//  &quot;data&quot;                    &quot;data&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">extension</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">              </span><span class="c1">//  &quot;.txt&quot;                    &quot;.txt&quot;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">is_absolute</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">            </span><span class="c1">//  1 (true)                  0 (false)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Operacje <code class="docutils literal notranslate"><span class="pre">append()</span></code>, <code class="docutils literal notranslate"><span class="pre">operator</span> <span class="pre">/()</span></code> umożliwiają łączenie ścieżek wstawiając separator</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s">&quot;Training&quot;</span><span class="p">;</span>
+<span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;Modern&quot;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;Cpp17&quot;</span><span class="p">;</span>
+<span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Programming&quot;</span><span class="p">);</span>
+<span class="c1">// Windows: C:\Users\Infotraining\Documents\Training\Modern\Cpp17\Programming</span>
+<span class="c1">// POSIX:   /home/infotraining/docs/Training/Modern/Cpp17/Programming</span>
+</pre></div>
+</div>
+</li>
+<li><p>Operacje <code class="docutils literal notranslate"><span class="pre">concat()</span></code>, <code class="docutils literal notranslate"><span class="pre">operator</span> <span class="pre">+()</span></code> - łączą elementy w ścieżkę, ale bez użycia separatora</p></li>
+</ul>
+</section>
+<section id="iteracja-po-elementach-katalogu">
+<h2>Iteracja po elementach katalogu<a class="headerlink" href="#iteracja-po-elementach-katalogu" title="Permalink to this heading">#</a></h2>
+<p>Iteracja może zostać zrealizowana przy pomocy <em>iteratorów katalogów</em> oraz</p>
+<ul>
+<li><p>pętli <em>range-based-for</em>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">base_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;temp&quot;</span><span class="p">;</span>
+
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Content of: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">base_path</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">directory_entry</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dir_entry</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">directory_iterator</span><span class="p">(</span><span class="n">base_path</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dir_entry</span><span class="p">.</span><span class="n">path</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>pętli <em>for</em> z iteratorami</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">string</span><span class="w"> </span><span class="nf">rwx</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">p</span><span class="p">](</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="w"> </span><span class="n">bit</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">none</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">owner_read</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">owner_write</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">owner_exec</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;x&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">group_read</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">group_write</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">group_exec</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;x&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">others_read</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">others_write</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">perms</span><span class="o">::</span><span class="n">others_exec</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;x&#39;</span><span class="p">)};</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Recursive content of: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">base_path</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">directory_entry</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dir_entry</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">recursive_directory_iterator</span><span class="p">(</span><span class="n">base_path</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir_entry</span><span class="p">.</span><span class="n">path</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">rwx_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rwx</span><span class="p">(</span><span class="n">dir_entry</span><span class="p">.</span><span class="n">status</span><span class="p">().</span><span class="n">permissions</span><span class="p">());</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">is_regular_file</span><span class="p">(</span><span class="n">dir_entry</span><span class="p">.</span><span class="n">status</span><span class="p">())</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">file_size</span><span class="p">(</span><span class="n">dir_entry</span><span class="p">.</span><span class="n">path</span><span class="p">())</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rwx_status</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span>
+<span class="w">         </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">setw</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span>
+<span class="w">         </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>W powyższym przykładzie użyty został <em>iterator rekurencyjny</em>.</p>
+</section>
+<section id="modyfikacje-struktury-plikow-i-katalogow">
+<h2>Modyfikacje struktury plików i katalogów<a class="headerlink" href="#modyfikacje-struktury-plikow-i-katalogow" title="Permalink to this heading">#</a></h2>
+<p>Biblioteka Filesystem zawiera zbiór funkcji umożliwiających modyfikację struktury plików:</p>
+<ul class="simple">
+<li><p>kopiowanie - <code class="docutils literal notranslate"><span class="pre">std::filesystem::copy()</span></code></p></li>
+<li><p>usuwanie - <code class="docutils literal notranslate"><span class="pre">std::filesystem::remove()</span></code> i <code class="docutils literal notranslate"><span class="pre">std::filesystem::remove_all()</span></code></p></li>
+<li><p>tworzenie katalogów - <code class="docutils literal notranslate"><span class="pre">std::filesystem::create_directory()</span></code> i <code class="docutils literal notranslate"><span class="pre">std::filesystem::create_directories()</span></code></p></li>
+<li><p>tworzenie linków - <code class="docutils literal notranslate"><span class="pre">std::filesystem::create_symlink()</span></code> i <code class="docutils literal notranslate"><span class="pre">std::filesystem::create_directory_symlink()</span></code></p></li>
+<li><p>zmiana nazwy - <code class="docutils literal notranslate"><span class="pre">std::filesystem::rename()</span></code></p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">create_directories</span><span class="p">(</span><span class="s">&quot;sandbox/dir/subdir&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="p">(</span><span class="s">&quot;sandbox/file1.txt&quot;</span><span class="p">).</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="s">&quot;sandbox/file1.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sandbox/file2.txt&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// copy file</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="s">&quot;sandbox/dir&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sandbox/dir2&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// copy directory (non-recursive)</span>
+
+<span class="w">    </span><span class="c1">// sandbox holds 2 files and 2 directories, one of which has a subdirectory</span>
+<span class="w">    </span><span class="c1">// sandbox/file1.txt</span>
+<span class="w">    </span><span class="c1">// sandbox/file2.txt</span>
+<span class="w">    </span><span class="c1">// sandbox/dir2</span>
+<span class="w">    </span><span class="c1">// sandbox/dir</span>
+<span class="w">    </span><span class="c1">// sandbox/dir/subdir</span>
+
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="s">&quot;sandbox&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sandbox/copy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">copy_options</span><span class="o">::</span><span class="n">recursive</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// sandbox/copy holds copies of the above files and subdirectories</span>
+
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">remove_all</span><span class="p">(</span><span class="s">&quot;sandbox&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="optional.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Klasa std::optional</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parallel-stl.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Algorytmy współbieżne STL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podstawowe-pojecia-w-bibliotece-filesystem">Podstawowe pojęcia w bibliotece Filesystem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podstawowe-obiekty-biblioteki-filesystem">Podstawowe obiekty biblioteki Filesystem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteracja-po-elementach-katalogu">Iteracja po elementach katalogu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modyfikacje-struktury-plikow-i-katalogow">Modyfikacje struktury plików i katalogów</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś - Infotraining
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

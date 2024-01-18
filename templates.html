@@ -1,0 +1,1138 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Szablony w C++17 &#8212; Book title</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'templates';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fold expressions" href="fold-expressions.html" />
+    <link rel="prev" title="Poprawki standardu (bugfixes)" href="core-fixes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Book title - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Book title - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Programowanie w C++17
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vocabulary-types.html">Nowe typy standardowe w C++17</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stdcpp17.html">C++17 - kompilatory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-features.html">Nowe elementy języka</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-fixes.html">Poprawki standardu (bugfixes)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Szablony w C++17</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fold-expressions.html">Fold expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string-view.html">Klasa std::string_view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="any.html">Klasa std::any</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant.html">Klasa std::variant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optional.html">Klasa std::optional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Biblioteka Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-stl.html">Algorytmy współbieżne STL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="new-library-features.html">Nowe elementy biblioteki standardowej</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-template/issues/new?title=Issue%20on%20page%20%2Ftemplates.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/templates.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Szablony w C++17</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedukcja-argumentow-szablonu-dla-klas-ctad">Dedukcja argumentów szablonu dla klas (CTAD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stosowanie-mechanizmu-dedukcji-argumentow-szablonu-klasy">Stosowanie mechanizmu dedukcji argumentów szablonu klasy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specjalny-przypadek-dedukcji-argumentow-klasy-szablonowej">Specjalny przypadek dedukcji argumentów klasy szablonowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#podpowiedzi-dedukcyjne-deduction-guides">Podpowiedzi dedukcyjne (<em>deduction guides</em>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#podpowiedzi-dedukcyjne-vs-konstruktory">Podpowiedzi dedukcyjne vs. Konstruktory</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#niejawne-podpowiedzi-dedukcyjne">Niejawne podpowiedzi dedukcyjne</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agregaty-a-dedukcja-argumentow">Agregaty a dedukcja argumentów</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#podpowiedzi-dedukcyjne-w-bibliotece-standardowej">Podpowiedzi dedukcyjne w bibliotece standardowej</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-pair-t">std::pair&lt;T&gt;</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-tuple-t">std::tuple&lt;T…&gt;</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-optional-t">std::optional&lt;T&gt;</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inteligentne-wskazniki">Inteligentne wskaźniki</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-function">std::function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kontenery-i-sekwencje">Kontenery i sekwencje</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deklaracje-using-w-variadic-templates">Deklaracje using w <em>variadic templates</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametry-szablonu-nie-bedace-typami-ze-specyfikatorem-auto">Parametry szablonu nie będące typami ze specyfikatorem <code class="docutils literal notranslate"><span class="pre">auto</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-templates-ze-specyfikatorem-auto">Variable templates ze specyfikatorem auto</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="szablony-w-c-17">
+<h1>Szablony w C++17<a class="headerlink" href="#szablony-w-c-17" title="Permalink to this heading">#</a></h1>
+<section id="dedukcja-argumentow-szablonu-dla-klas-ctad">
+<h2>Dedukcja argumentów szablonu dla klas (CTAD)<a class="headerlink" href="#dedukcja-argumentow-szablonu-dla-klas-ctad" title="Permalink to this heading">#</a></h2>
+<p>C++17 wprowadza mechanizm dedukcji argumentów szablonu klasy (<em>Class Template Argument Deduction</em>).
+Typy parametrów szablonu klasy mogą być dedukowane na podstawie argumentów przekazanych do konstruktora tworzonego obiektu.
+Wcześniej mechanizm dedukcji typu był dostępny tylko dla szablonów funkcji i deklaracji <code class="docutils literal notranslate"><span class="pre">auto</span></code>.</p>
+<p>Dla klasy szablonowej:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T1</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">T2</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ValuePair</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T1</span><span class="w"> </span><span class="n">fst</span><span class="p">;</span>
+<span class="w">    </span><span class="n">T2</span><span class="w"> </span><span class="n">snd</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ValuePair</span><span class="p">(</span><span class="n">T1</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">T2</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fst</span><span class="p">{</span><span class="n">f</span><span class="p">},</span><span class="w"> </span><span class="n">snd</span><span class="p">{</span><span class="n">s</span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Mechanizm dedukcji typów argumentów klasy szablonowej umożliwia prostsze tworzenie instancji. Zamiast jawnie specyfikować
+argumenty szablonu, możemy kompilatorowi zlecić dedukcję na podstawie wywołania konstruktora klasy:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ValuePair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vp1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK - all versions of standard</span>
+
+<span class="n">ValuePair</span><span class="w"> </span><span class="nf">vp2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK in C++17 - deduces ValuePair&lt;int, double&gt;</span>
+<span class="n">ValuePair</span><span class="w"> </span><span class="n">vp3</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK in C++17 - deduced ValuePair&lt;int, double&gt;</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">vp4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ValuePair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK in C++17 - deduces ValuePair&lt;int, const char*&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">vp5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ValuePair</span><span class="p">{</span><span class="mf">3.14</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pi&quot;</span><span class="n">s</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK in C++17 - deduces ValuePair&lt;int, std::string&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nie można częściowo dedukować argumentów szablonu klasy.
+Należy wyspecyfikować lub wydedukować wszystkie parametry z wyjątkiem parametrów domyślnych.</p>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ValuePair</span><span class="w"> </span><span class="n">vp6</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR - T1 &amp; T2 are undefined - deduction fails</span>
+<span class="n">ValuePair</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vp7</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">};</span><span class="w"> </span><span class="c1">// ERROR - partial deduction is not allowed</span>
+</pre></div>
+</div>
+<p>Inny przykład dedukcji typu argumentów dla szablony klasy:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">T2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T1</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Generic</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T1</span><span class="w"> </span><span class="n">fst</span><span class="p">;</span>
+<span class="w">    </span><span class="n">T2</span><span class="w"> </span><span class="n">snd</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">Generic</span><span class="p">(</span><span class="n">T1</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T1</span><span class="p">{},</span><span class="w"> </span><span class="n">T2</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T2</span><span class="p">{})</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fst</span><span class="p">{</span><span class="n">f</span><span class="p">},</span><span class="w"> </span><span class="n">snd</span><span class="p">{</span><span class="n">s</span><span class="p">}</span>
+<span class="w">    </span><span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="n">Generic</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g0</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">};</span><span class="w"> </span><span class="c1">// no deduction</span>
+
+<span class="n">Generic</span><span class="w"> </span><span class="n">g1</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">};</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">g1</span><span class="p">),</span><span class="w"> </span><span class="n">Generic</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">);</span>
+
+<span class="n">Generic</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g2</span><span class="p">{</span><span class="mf">3.14</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"> </span><span class="c1">// no deduction</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">g2</span><span class="p">),</span><span class="w"> </span><span class="n">Generic</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">);</span>
+
+<span class="n">Generic</span><span class="w"> </span><span class="n">g3</span><span class="p">{</span><span class="mf">3.14</span><span class="p">};</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">g3</span><span class="p">),</span><span class="w"> </span><span class="n">Generic</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="p">);</span>
+
+<span class="n">Generic</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">g4</span><span class="p">;</span><span class="w"> </span><span class="c1">// no deduction</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">g4</span><span class="p">),</span><span class="w"> </span><span class="n">Generic</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">);</span>
+
+<span class="n">Generic</span><span class="w"> </span><span class="n">g5</span><span class="p">{};</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">g5</span><span class="p">),</span><span class="w"> </span><span class="n">Generic</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="stosowanie-mechanizmu-dedukcji-argumentow-szablonu-klasy">
+<h3>Stosowanie mechanizmu dedukcji argumentów szablonu klasy<a class="headerlink" href="#stosowanie-mechanizmu-dedukcji-argumentow-szablonu-klasy" title="Permalink to this heading">#</a></h3>
+<p>Stosując mechanizm dedukcji argumentów szablonu klasy możemy zrezygnować ze stosowania
+funkcji pomocniczych definiowanych jako szablony funkcji. Zamiast tworzyć parę przy pomocy:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Możemy napisać:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">string_literals</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="n">p1</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="n">p2</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="n">s</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Inny praktyczny przykład dedukcji argumentów szablonu klasy:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span><span class="w"> </span><span class="n">mtx_one</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_mutex</span><span class="w"> </span><span class="n">mtx_two</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">scoped_lock</span><span class="w"> </span><span class="n">lk</span><span class="p">{</span><span class="n">mtx_one</span><span class="p">,</span><span class="w"> </span><span class="n">mtx_two</span><span class="p">};</span><span class="w"> </span><span class="c1">// deduces std::scoped_lock&lt;std::timed_mutex, std::shared_mutex&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="specjalny-przypadek-dedukcji-argumentow-klasy-szablonowej">
+<h3>Specjalny przypadek dedukcji argumentów klasy szablonowej<a class="headerlink" href="#specjalny-przypadek-dedukcji-argumentow-klasy-szablonowej" title="Permalink to this heading">#</a></h3>
+<p>Jeżeli kod służący do dedukcji argumentów szablonu klasy może być zinterpretowany
+jako przypadek inicjalizacji poprzez kopię, to kompilator preferuje taką interpretację.</p>
+<p>Rozważmy następujący przypadek dedukcji:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="w"> </span><span class="n">v</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c1">// vector&lt;int&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="w"> </span><span class="n">data1</span><span class="p">{</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">};</span><span class="w"> </span><span class="c1">// vector&lt;vector&lt;int&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Lecz w przypadku, gdy składnia inicjalizacji obiektu pasuje do wywołania konstruktora kopiującego,
+wtedy działa specjalna reguła dedukcji argumentu szablonu klasy:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="w"> </span><span class="n">data2</span><span class="p">{</span><span class="n">v</span><span class="p">};</span><span class="w"> </span><span class="c1">// vector&lt;int&gt;!</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>W powyższym kodzie dedukcja argumentów szablonu <code class="docutils literal notranslate"><span class="pre">vector</span></code> zależy od ilości argumentów przekazanych do konstruktora!</p>
+</div>
+</section>
+<section id="podpowiedzi-dedukcyjne-deduction-guides">
+<h3>Podpowiedzi dedukcyjne (<em>deduction guides</em>)<a class="headerlink" href="#podpowiedzi-dedukcyjne-deduction-guides" title="Permalink to this heading">#</a></h3>
+<p>C++17 umożliwia tworzenie podpowiedzi dla kompilatora, jak powinny być dedukowane typy parametrów szablonu klasy na podstawie wywołania odpowiedniego konstruktora.</p>
+<p>Daje to możliwość poprawy/modyfikacji domyślnego procesu dedukcji.</p>
+<p>Dla szablonu:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">S</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">S</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Podpowiedź dedukcyjna musi zostać umieszczona w tym samym zakresie (przestrzeni nazw) i może mieć postać:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">S</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// deduction guide</span>
+
+<span class="n">S</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="mi">12</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; S&lt;int&gt; x{12};</span>
+<span class="n">S</span><span class="w"> </span><span class="nf">y</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK -&gt; S&lt;int&gt; y(12);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S</span><span class="p">{</span><span class="mi">12</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; auto z = S&lt;int&gt;{12};</span>
+<span class="n">S</span><span class="w"> </span><span class="nf">s1</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">s2</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; S&lt;int&gt; s1(1), s2{2};</span>
+<span class="n">S</span><span class="w"> </span><span class="nf">s3</span><span class="p">(</span><span class="mi">42</span><span class="p">),</span><span class="w"> </span><span class="n">s4</span><span class="p">{</span><span class="mf">3.14</span><span class="p">};</span><span class="w"> </span><span class="c1">// ERROR</span>
+</pre></div>
+</div>
+<p>gdzie:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">S&lt;T&gt;</span></code> to tzw. typ zalecany (<em>guided type</em>)</p></li>
+<li><p>nazwa podpowiedzi dedukcyjnej musi być niekwalifikowaną nazwą klasy szablonowej zadeklarowanej wcześniej w tym samym zakresie</p></li>
+<li><p>typ zalecany podpowiedzi musi odwoływać się do identyfikatora szablonu (<em>template-id</em>), do którego odnosi się podpowiedź</p></li>
+</ul>
+<p>W deklaracji <code class="docutils literal notranslate"><span class="pre">S</span> <span class="pre">x{12};</span></code> specyfikator <code class="docutils literal notranslate"><span class="pre">S</span></code> jest nazywany symbolem zastępczym dla klasy (<em>placeholder class type</em>).
+W przypadku użycia symbolu zastępczego dla klasy, nazwa zmiennej musi zostać podana jako następny element składni.
+W rezultacie poniższa deklaracja jest błędem składniowym:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR - syntax not permitted</span>
+</pre></div>
+</div>
+<p>Dany szablon klasy może mieć wiele konstruktorów oraz wiele podpowiedzi dedukcyjnych:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Data</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">type1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Data</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ItemType</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">Data</span><span class="p">(</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="n">ItemType</span><span class="o">&gt;</span><span class="w"> </span><span class="n">il</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="p">(</span><span class="n">il</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">Data</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Data</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">Data</span><span class="p">(</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Data</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+
+<span class="n">Data</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Data</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">//...</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="n">d1</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK -&gt; Data&lt;string&gt;</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tab</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span>
+<span class="n">Data</span><span class="w"> </span><span class="nf">d2</span><span class="p">(</span><span class="n">tab</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK -&gt; Data&lt;const int*&gt;</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="n">d3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK -&gt; Data&lt;int&gt;</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="n">d4</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; Data&lt;vector&lt;int&gt;&gt;</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="n">d5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; Data&lt;vector&lt;int&gt;&gt;</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="n">d6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; Data&lt;vector&lt;int&gt;&gt;</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="nf">d7</span><span class="p">(</span><span class="n">d6</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK - copy by default rule -&gt; Data&lt;vector&lt;int&gt;&gt;</span>
+
+<span class="n">Data</span><span class="w"> </span><span class="n">d8</span><span class="p">{</span><span class="n">d6</span><span class="p">,</span><span class="w"> </span><span class="n">d7</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; Data&lt;vector&lt;Data&lt;vector&lt;int&gt;&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Podpowiedzi dedukcyjne nie są szablonami funkcji - służą jedynie dedukowaniu argumentów szablonu i nie są wywoływane.
+W rezultacie nie ma znaczenia czy argumenty w deklaracjach dedukcyjnych są przekazywane przez referencję, czy nie.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">X</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//...</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Y</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Y</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">X</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Y</span><span class="p">(</span><span class="n">X</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="n">X</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Y</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// deduction guide without references</span>
+</pre></div>
+</div>
+<p>W powyższym przykładzie podpowiedź dedukcyjna nie odpowiada dokładnie sygnaturom konstruktorów przeciążonych. Nie ma to znaczenia, ponieważ jedynym celem podpowiedzi jest umożliwienie dedukcji typu, który jest parametrem szablonu. Dopasowanie wywołania przeciążonego konstruktora odbywa się później.</p>
+<section id="podpowiedzi-dedukcyjne-vs-konstruktory">
+<h4>Podpowiedzi dedukcyjne vs. Konstruktory<a class="headerlink" href="#podpowiedzi-dedukcyjne-vs-konstruktory" title="Permalink to this heading">#</a></h4>
+<p>Podpowiedzi dedukcyjne rywalizują z konstruktorami klasy. Mechanizm dedukcji wykorzystuje konstruktor lub podpowiedź, która
+ma najwyższy priorytet zgodnie z regułami przeciążania funkcji. Jeśli konstruktor i podpowiedź pasują jednakowo dobrze, kompilator preferuje podpowiedź dedukcyjną.</p>
+<p>Dla szablonu klasy:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Thing</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Thing</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">Thing</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Thing</span><span class="o">&lt;</span><span class="kt">long</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Przy wywołaniu:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Thing</span><span class="w"> </span><span class="n">t1</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span><span class="w"> </span><span class="c1">// T deduced as long</span>
+</pre></div>
+</div>
+<p>preferowana jest podpowiedź dedukcyjna.</p>
+<p>Ale, gdy w wywołaniu konstruktora użyjemy typu <code class="docutils literal notranslate"><span class="pre">char</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Thing</span><span class="w"> </span><span class="n">t2</span><span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">};</span><span class="w"> </span><span class="c1">// deduced as char</span>
+</pre></div>
+</div>
+<p>preferowany do dedukcji argumentu szablonu jest konstruktor (ponieważ nie jest wymagana konwersja typu).</p>
+<p>Ponieważ przekazanie argumentu przez wartość, jest dopasowywane równie dobrze co przekazanie argumentu
+przez referencję oraz biorąc pod uwagę fakt, że podpowiedź dedukcyjna jest preferowana przy równie dobrym dopasowaniu,
+najczęściej wystarczy w sygnaturze podpowiedzi przekazać parametry przez wartość.</p>
+</section>
+</section>
+<section id="niejawne-podpowiedzi-dedukcyjne">
+<h3>Niejawne podpowiedzi dedukcyjne<a class="headerlink" href="#niejawne-podpowiedzi-dedukcyjne" title="Permalink to this heading">#</a></h3>
+<p>Ponieważ często podpowiedź dedukcyjna jest potrzebna dla każdego konstruktora klasy, standard C++17
+wprowadza mechanizm <strong>niejawnych podpowiedzi dedukcyjnych</strong> (<em>implicit deduction guides</em>).
+Działa on w następujący sposób:</p>
+<ul class="simple">
+<li><p>Lista parametrów szablonu dla podpowiedzi zawiera listę parametrów z szablonu klasy
+- w przypadku szablonowego konstruktora klasy kolejnym elementem jest lista parametrów szablonu konstruktora klasy</p></li>
+<li><p>Parametry “funkcyjne” podpowiedzi są kopiowane z konstruktora lub konstruktora szablonowego</p></li>
+<li><p>Zalecany typ w podpowiedzi jest nazwą szablonu z argumentami, które są parametrami szablonu wziętymi
+z klasy szablonowej</p></li>
+</ul>
+<p>Dla klasy szablonowej rozważanej powyżej:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">S</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">S</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>niejawna podpowiedź dedukcyjna będzie wyglądać następująco:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">S</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">// implicit deduction guide</span>
+</pre></div>
+</div>
+<p>W rezultacie programista nie musi implementować jej jawnie.</p>
+</section>
+<section id="agregaty-a-dedukcja-argumentow">
+<h3>Agregaty a dedukcja argumentów<a class="headerlink" href="#agregaty-a-dedukcja-argumentow" title="Permalink to this heading">#</a></h3>
+<p>Jeśli szablon klasy jest agregatem, to mechanizm automatycznej dedukcji argumentów szablonu wymaga napisania jawnej podpowiedzi dedukcyjnej.</p>
+<p>Bez podpowiedzi dedukcyjnej dedukcja dla agregatów nie działa:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Aggregate1</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Aggregate1</span><span class="w"> </span><span class="n">agg1</span><span class="p">{</span><span class="mi">8</span><span class="p">};</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="n">Aggregate1</span><span class="w"> </span><span class="n">agg2</span><span class="p">{</span><span class="s">&quot;eight&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="n">Aggregate1</span><span class="w"> </span><span class="n">agg3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+</pre></div>
+</div>
+<p>Gdy napiszemy dla agregatu podpowiedź, to możemy zacząć korzystać z mechanizmu dedukcji:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Aggregate2</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">Aggregate2</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Aggregate2</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="n">Aggregate2</span><span class="w"> </span><span class="n">agg1</span><span class="p">{</span><span class="mi">8</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; Aggregate2&lt;int&gt;</span>
+<span class="n">Aggregate2</span><span class="w"> </span><span class="n">agg2</span><span class="p">{</span><span class="s">&quot;eight&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; Aggregate2&lt;const char*&gt;</span>
+<span class="n">Aggregate2</span><span class="w"> </span><span class="n">agg3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">3.14</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// OK -&gt; Aggregate2&lt;double&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="podpowiedzi-dedukcyjne-w-bibliotece-standardowej">
+<h3>Podpowiedzi dedukcyjne w bibliotece standardowej<a class="headerlink" href="#podpowiedzi-dedukcyjne-w-bibliotece-standardowej" title="Permalink to this heading">#</a></h3>
+<p>Dla wielu klas szablonowych z biblioteki standardowej dodano podpowiedzi dedukcyjne w celu ułatwienia tworzenia instancji tych klas.</p>
+<section id="std-pair-t">
+<h4>std::pair&lt;T&gt;<a class="headerlink" href="#std-pair-t" title="Permalink to this heading">#</a></h4>
+<p>Dla pary STL dodana w standardzie podpowiedź to:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T1</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">T2</span><span class="o">&gt;</span>
+<span class="n">pair</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="w"> </span><span class="n">T2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="w"> </span><span class="n">T2</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="n">pair</span><span class="w"> </span><span class="nf">p1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"> </span><span class="c1">// -&gt; pair&lt;int, double&gt;</span>
+
+<span class="n">pair</span><span class="w"> </span><span class="n">p2</span><span class="p">{</span><span class="mf">3.14f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="n">s</span><span class="p">};</span><span class="w"> </span><span class="c1">// -&gt; pair&lt;float, string&gt;</span>
+
+<span class="n">pair</span><span class="w"> </span><span class="n">p3</span><span class="p">{</span><span class="mf">3.14f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// -&gt; pair&lt;float, const char*&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">tab</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+<span class="n">pair</span><span class="w"> </span><span class="n">p4</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">tab</span><span class="p">};</span><span class="w"> </span><span class="c1">// -&gt; pair&lt;int, int*&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="std-tuple-t">
+<h4>std::tuple&lt;T…&gt;<a class="headerlink" href="#std-tuple-t" title="Permalink to this heading">#</a></h4>
+<p>Szablon <code class="docutils literal notranslate"><span class="pre">std::tuple</span></code> jest traktowany podobnie jak <code class="docutils literal notranslate"><span class="pre">std::pair</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="p">...</span><span class="w"> </span><span class="n">UTypes</span><span class="o">&gt;</span>
+<span class="n">tuple</span><span class="p">(</span><span class="n">UTypes</span><span class="p">...)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">UTypes</span><span class="p">...</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T1</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">T2</span><span class="o">&gt;</span>
+<span class="n">tuple</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="w"> </span><span class="n">T2</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="w"> </span><span class="n">T2</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">//... other deduction guides working with allocators</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cref_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+
+<span class="n">tuple</span><span class="w"> </span><span class="n">t1</span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">cref_x</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="n">s</span><span class="p">};</span><span class="w"> </span><span class="c1">// -&gt; tuple&lt;int, int*, int, const char*, string&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="std-optional-t">
+<h4>std::optional&lt;T&gt;<a class="headerlink" href="#std-optional-t" title="Permalink to this heading">#</a></h4>
+<p>Klasa <code class="docutils literal notranslate"><span class="pre">std::optional</span></code> jest traktowana podobnie do pary i krotki.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">optional</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="n">optional</span><span class="w"> </span><span class="nf">o1</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// -&gt; optional&lt;int&gt;</span>
+<span class="n">optional</span><span class="w"> </span><span class="n">o2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o1</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; optional&lt;int&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="inteligentne-wskazniki">
+<h4>Inteligentne wskaźniki<a class="headerlink" href="#inteligentne-wskazniki" title="Permalink to this heading">#</a></h4>
+<p>Dedukcja dla argumentów konstruktora będących wskaźnikami jest zablokowana:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">};</span>
+<span class="n">unique_ptr</span><span class="w"> </span><span class="n">uptr</span><span class="p">{</span><span class="n">ip</span><span class="p">};</span><span class="w"> </span><span class="c1">// ERROR - ill-formed (due to array type clash)</span>
+</pre></div>
+</div>
+<p>Wspierana jest dedukcja przy konwersjach:</p>
+<ul>
+<li><p>z <code class="docutils literal notranslate"><span class="pre">weak_ptr</span></code>/<code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> do <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shared_ptr</span><span class="p">(</span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">  </span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">D</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shared_ptr</span><span class="p">(</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">  </span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>z <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code> do <code class="docutils literal notranslate"><span class="pre">weak_ptr</span></code></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">weak_ptr</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">uptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_unique</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="n">shared_ptr</span><span class="w"> </span><span class="n">sptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">move</span><span class="p">(</span><span class="n">uptr</span><span class="p">);</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>
+
+<span class="n">weak_ptr</span><span class="w"> </span><span class="n">wptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; weak_prt&lt;int&gt;</span>
+
+<span class="n">shared_ptr</span><span class="w"> </span><span class="n">sptr2</span><span class="p">{</span><span class="n">wptr</span><span class="p">};</span><span class="w"> </span><span class="c1">// -&gt; shared_ptr&lt;int&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="std-function">
+<h4>std::function<a class="headerlink" href="#std-function" title="Permalink to this heading">#</a></h4>
+<p>Dozwolone jest dedukowanie sygnatur funkcji dla <code class="docutils literal notranslate"><span class="pre">std::function</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">add</span><span class="p">;</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span>
+
+<span class="n">function</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">txt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">txt</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; from lambda!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="n">f2</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="kontenery-i-sekwencje">
+<h4>Kontenery i sekwencje<a class="headerlink" href="#kontenery-i-sekwencje" title="Permalink to this heading">#</a></h4>
+<p>Dla kontenerów standardowych dozwolona jest dedukcja typu kontenera dla konstruktora akceptującego parę iteratorów:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vec</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+<span class="n">list</span><span class="w"> </span><span class="nf">lst</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w"> </span><span class="c1">// -&gt; list&lt;int&gt;</span>
+</pre></div>
+</div>
+<p>Dla <code class="docutils literal notranslate"><span class="pre">std::array</span></code> dozwolona jest dedukcja z sekwencji:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="w"> </span><span class="n">arr1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// -&gt; std::array&lt;int, 3&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="deklaracje-using-w-variadic-templates">
+<h2>Deklaracje using w <em>variadic templates</em><a class="headerlink" href="#deklaracje-using-w-variadic-templates" title="Permalink to this heading">#</a></h2>
+<p>W C++17 dodano możliwość wygodniejszego użycia deklaracji <code class="docutils literal notranslate"><span class="pre">using</span></code> w przypadku
+rozpakowywania paczki parametrów (<em>parameter pack expansion</em>) w szablonie wariadycznym.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_set&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Customer</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name_</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Customer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">name_</span><span class="p">{</span><span class="n">name</span><span class="p">}</span>
+<span class="w">    </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">name_</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">CustomerEq</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">Customer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Customer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">name</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">name</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">CustomerHash</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">Customer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">{}(</span><span class="n">c</span><span class="p">.</span><span class="n">name</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// overloader</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Overloader</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Ts</span><span class="p">...</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">Ts</span><span class="o">::</span><span class="k">operator</span><span class="p">()...;</span><span class="w"> </span><span class="c1">// since C++17</span>
+<span class="p">};</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">CustomerComparer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Overloader</span><span class="o">&lt;</span><span class="n">CustomerEq</span><span class="p">,</span><span class="w"> </span><span class="n">CustomerHash</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">Customer</span><span class="p">,</span><span class="w"> </span><span class="n">CustomerComparer</span><span class="p">,</span><span class="w"> </span><span class="n">CustomerComparer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">collection</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="parametry-szablonu-nie-bedace-typami-ze-specyfikatorem-auto">
+<h2>Parametry szablonu nie będące typami ze specyfikatorem <code class="docutils literal notranslate"><span class="pre">auto</span></code><a class="headerlink" href="#parametry-szablonu-nie-bedace-typami-ze-specyfikatorem-auto" title="Permalink to this heading">#</a></h2>
+<p>C++17 wprowadza możliwość zadeklarowania parametru szablonu nie będącego typem jako <code class="docutils literal notranslate"><span class="pre">auto</span></code> lub <code class="docutils literal notranslate"><span class="pre">decltype(auto)</span></code>.
+W rezultacie typ stałej jest automatycznie dedukowany wg odpowiedniego mechanizmu.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">auto</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">S</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//...</span>
+<span class="p">};</span>
+
+<span class="n">S</span><span class="o">&lt;</span><span class="mi">42</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s1</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; N in S is int</span>
+<span class="n">S</span><span class="o">&lt;</span><span class="sc">&#39;a&#39;</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s2</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; N in S is char</span>
+<span class="n">S</span><span class="o">&lt;</span><span class="mf">3.14</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s3</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR - template parametr type still cannot be double</span>
+
+<span class="c1">// partial specialization</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">S</span><span class="o">&lt;</span><span class="n">N</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="p">};</span>
+
+<span class="c1">// list of heterogenous constant template arguments</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">auto</span><span class="p">...</span><span class="w"> </span><span class="n">CS</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ValueList</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span>
+
+
+<span class="c1">// list of homogenous constant template arguments</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">auto</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">C</span><span class="p">)...</span><span class="w"> </span><span class="n">CS</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ValueList</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Przykład szablonu z parametrem specyfikowanym jako <code class="docutils literal notranslate"><span class="pre">decltype(auto)</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">S</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">S</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;N has value: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;type of N is int&amp;: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">is_same_v</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;&gt;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;N has value: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">665</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">{};</span>
+
+<span class="n">S</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s0</span><span class="p">;</span><span class="w"> </span><span class="c1">// N is int</span>
+<span class="n">S</span><span class="o">&lt;</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s1</span><span class="p">;</span><span class="w"> </span><span class="c1">// N is int&amp; =&gt; prints: &#39;N has value 0&#39;</span>
+
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">77</span><span class="p">;</span>
+<span class="n">S</span><span class="o">&lt;</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s2</span><span class="p">;</span><span class="w"> </span><span class="c1">// N is int&amp; =&gt; prints: &#39;N has value 77&#39;</span>
+
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span><span class="p">;</span>
+<span class="n">s1</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// prints: &#39;N has value 88&#39;</span>
+<span class="n">s2</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"> </span><span class="c1">// prints: &#39;N has value 88&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="variable-templates-ze-specyfikatorem-auto">
+<h2>Variable templates ze specyfikatorem auto<a class="headerlink" href="#variable-templates-ze-specyfikatorem-auto" title="Permalink to this heading">#</a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// variable.hpp</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FixedArray</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK - since C++17</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">auto</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK - since C++17</span>
+
+<span class="c1">// in test1.cpp</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;variable.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">();</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FixedArray</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">100u</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">17</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FixedArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">print</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="o">&lt;</span><span class="sc">&#39;c&#39;</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// in test2.cpp</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;variable.hpp&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">FixedArray</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">100u</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0u</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">FixedArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="o">&gt;</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">FixedArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="o">&gt;</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="core-fixes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Poprawki standardu (bugfixes)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fold-expressions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fold expressions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedukcja-argumentow-szablonu-dla-klas-ctad">Dedukcja argumentów szablonu dla klas (CTAD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stosowanie-mechanizmu-dedukcji-argumentow-szablonu-klasy">Stosowanie mechanizmu dedukcji argumentów szablonu klasy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specjalny-przypadek-dedukcji-argumentow-klasy-szablonowej">Specjalny przypadek dedukcji argumentów klasy szablonowej</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#podpowiedzi-dedukcyjne-deduction-guides">Podpowiedzi dedukcyjne (<em>deduction guides</em>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#podpowiedzi-dedukcyjne-vs-konstruktory">Podpowiedzi dedukcyjne vs. Konstruktory</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#niejawne-podpowiedzi-dedukcyjne">Niejawne podpowiedzi dedukcyjne</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agregaty-a-dedukcja-argumentow">Agregaty a dedukcja argumentów</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#podpowiedzi-dedukcyjne-w-bibliotece-standardowej">Podpowiedzi dedukcyjne w bibliotece standardowej</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-pair-t">std::pair&lt;T&gt;</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-tuple-t">std::tuple&lt;T…&gt;</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-optional-t">std::optional&lt;T&gt;</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inteligentne-wskazniki">Inteligentne wskaźniki</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#std-function">std::function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kontenery-i-sekwencje">Kontenery i sekwencje</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deklaracje-using-w-variadic-templates">Deklaracje using w <em>variadic templates</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametry-szablonu-nie-bedace-typami-ze-specyfikatorem-auto">Parametry szablonu nie będące typami ze specyfikatorem <code class="docutils literal notranslate"><span class="pre">auto</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-templates-ze-specyfikatorem-auto">Variable templates ze specyfikatorem auto</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś - Infotraining
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
