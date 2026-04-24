@@ -1,6 +1,6 @@
 version: 1
 project:
-  title: Book title
+  title: Programowanie w C++17
   authors:
     - name: Krystian Piękoś - Infotraining
   github: infotraining/docs-template
@@ -18,18 +18,18 @@ project:
       output: exports/book.pdf
   toc:
     - file: content/index
-    - file: content/stdcpp17.rst
-    - file: content/basic-features.rst
-    - file: content/core-fixes.rst
-    - file: content/templates.rst
-    - file: content/fold-expressions.rst
-    - file: content/string-view.rst
-    - file: content/any.rst
-    - file: content/variant.rst
-    - file: content/optional.rst
-    - file: content/filesystem.rst
-    - file: content/parallel-stl.rst
-    - file: content/new-library-features.rst
+    - file: content/stdcpp17.md
+    - file: content/basic-features.md
+    - file: content/core-fixes.md
+    - file: content/templates.md
+    - file: content/fold-expressions.md
+    - file: content/string-view.md
+    - file: content/any.md
+    - file: content/variant.md
+    - file: content/optional.md
+    - file: content/filesystem.md
+    - file: content/parallel-stl.md
+    - file: content/new-library-features.md
 site:
   template: book-theme
   options:
