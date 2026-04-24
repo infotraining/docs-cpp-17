@@ -4,87 +4,90 @@
 
 ### std::clamp
 
-* | `template<class T>`
-  | `constexpr const T& clamp( const T& v, const T& lo, const T& hi )`
+* `template<class T>` <br/>
+  `constexpr const T& clamp( const T& v, const T& lo, const T& hi )`
 
-* | `template<class T, class Compare>`
-  | `constexpr const T& clamp( const T& v, const T& lo, const T& hi, Compare comp )`
+* `template<class T, class Compare>` <br/>
+  `constexpr const T& clamp( const T& v, const T& lo, const T& hi, Compare comp )`
 
-Ogranicza wartość do odpowiednich przedziałów. Odpowiednik: `std::min(std::max(val, lo), hi)`
+  Ogranicza wartość do odpowiednich przedziałów. 
+  
+  Odpowiednik: `std::min(std::max(val, lo), hi)`
 
-```cpp
- auto c1 = std::clamped(42, 10, 90);  // c1 = 42;
- auto c2 = std::clamped(7, 10, 90); // c2 = 10;
- auto c3 = std::clamped(99, 10, 90); // c3 = 90
-```
+  ```cpp
+  auto c1 = std::clamped(42, 10, 90);  // c1 = 42;
+  auto c2 = std::clamped(7, 10, 90); // c2 = 10;
+  auto c3 = std::clamped(99, 10, 90); // c3 = 90
+  ```
 
 ### std::sample
 
-* | `template<class PopulationIt, class SampleIt, class Distance, class UniformRandomBitGenerator>`
-  | `SampleIt sample(PopulationIt first, PopulationIt last, SampleIt out, Distance n, UniformRandomBitGenerator&& g)`
+* `template<class PopulationIt, class SampleIt, class Distance, class UniformRandomBitGenerator>` <br/>
+  `SampleIt sample(PopulationIt first, PopulationIt last, SampleIt out, Distance n, UniformRandomBitGenerator&& g)`
 
-Ekstrakcja próbki statystycznej z sekwencji określonej iteratorami `[first; last)`.
-Próbka `n` elementów jest zapisywana do sekwencji wskazywanej przez iterator wyjściowy `out`. Elementy są wybierane
-za pomocą generatora liczb pseudolosowych `g`.
+  Ekstrakcja próbki statystycznej z sekwencji określonej iteratorami `[first; last)`.
 
-```cpp
- std::string in = "abcdefgh", out;
- std::sample(in.begin(), in.end(), std::back_inserter(out),
-             5, std::mt19937{std::random_device{}()});
+  Próbka `n` elementów jest zapisywana do sekwencji wskazywanej przez iterator wyjściowy `out`. Elementy są wybierane
+  za pomocą generatora liczb pseudolosowych `g`.
 
- // out can be: cdefg
-```
+  ```cpp
+  std::string in = "abcdefgh", out;
+  std::sample(in.begin(), in.end(), std::back_inserter(out),
+              5, std::mt19937{std::random_device{}()});
+
+  // out can be: cdefg
+  ```
 
 ### std::search - opcje wyszukiwania
 
 C++17 oferuje nowe (szybsze) opcje wyszukiwania podciągów wykorzystywane w
 algorytmie `std::search()`.
 
-* | `template<class ForwardIt, class BinaryPredicate = std::equal_to<>>`
-  | `class default_searcher;`
+* `template<class ForwardIt, class BinaryPredicate = std::equal_to<>>` <br/>
+  `class default_searcher;`
 
   Standardowa (taka jak przed C++17) implementacja opcji wyszukiwania.
 
-* | `template<class RandomIt1,`
-  |     `class Hash = std::hash<typename std::iterator_traits<RandomIt1>::value_type>,`
-  |     `class BinaryPredicate = std::equal_to<>`
-  | `> class boyer_moore_searcher;`
+* `template<class RandomIt1,` <br/>
+      `class Hash = std::hash<typename std::iterator_traits<RandomIt1>::value_type>,` <br/>
+      `class BinaryPredicate = std::equal_to<>` <br/>
+  `> class boyer_moore_searcher;`
 
   Implementacja algorytmu wyszukiwania *Boyer-Moore*
 
-* | `template<class RandomIt1,`
-  |     `class Hash = std::hash<typename std::iterator_traits<RandomIt1>::value_type>,`
-  |     `class BinaryPredicate = std::equal_to<>`
-  | `> class boyer_moore_horspool_searcher;`
+* `template<class RandomIt1,` <br/>
+      `class Hash = std::hash<typename std::iterator_traits<RandomIt1>::value_type>,` <br/>
+      `class BinaryPredicate = std::equal_to<>` <br/>
+  `> class boyer_moore_horspool_searcher;` <br/>
 
   Implementacja algorytmu *Boyer-Moore-Horspool*
 
-Przykład użycia nowych algorytmów wyszukiwania:
+  Przykład użycia nowych algorytmów wyszukiwania:
 
-```cpp
-std::string in = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
-                 " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+  ```cpp
+  std::string in = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                  " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
 
-std::string needle = "pisci";
-
-
-std::default_searcher searcher{needle.begin(), needle.end()}; // default search
-
-std::boyer_moore_searcher searcher{needle.begin(), needle.end()}; // faster search
-
-std::boyer_moore_horspool_searcher searcher{needle.begin(), needle.end()};
+  std::string needle = "pisci";
 
 
-if(auto it = std::search(in.begin(), in.end(), searcher); it != in.end())
-{
-    std::cout << "The string " << needle << " found at offset "
-              << it - in.begin() << '\n';
-}
-else
-{
-    std::cout << "The string " << needle << " not found\n";
-}
-```
+  std::default_searcher searcher{needle.begin(), needle.end()}; // default search
+
+  std::boyer_moore_searcher searcher{needle.begin(), needle.end()}; // faster search
+
+  std::boyer_moore_horspool_searcher searcher{needle.begin(), needle.end()};
+
+
+  if(auto it = std::search(in.begin(), in.end(), searcher); it != in.end())
+  {
+      std::cout << "The string " << needle << " found at offset "
+                << it - in.begin() << '\n';
+  }
+  else
+  {
+      std::cout << "The string " << needle << " not found\n";
+  }
+  ```
 
 ## Poprawki dla kontenerów standardowych
 
@@ -183,24 +186,24 @@ Przykład przepięcia węzłów między kontenerami asocjacyjnymi:
   - nagłówek: `<iterator>`
 
 ```cpp
-  template <typename T>
-  void check(const T& t)
-  {
-      std::cout << "size: " << std::size(t) << '\n';
-      std::cout << "empty: " << boolalpha << std::empty(t) << '\n';
-      std::cout << "data: " << std::data(t) << '\n'; // prints address
-  }
+template <typename T>
+void check(const T& t)
+{
+    std::cout << "size: " << std::size(t) << '\n';
+    std::cout << "empty: " << boolalpha << std::empty(t) << '\n';
+    std::cout << "data: " << std::data(t) << '\n'; // prints address
+}
 
-  //...
+//...
 
-  int arr[10] = { 1, 2, 3, 4, 5 };
-  check(arr);
+int arr[10] = { 1, 2, 3, 4, 5 };
+check(arr);
 
-  std::vector<int> vec = { 1, 2, 3, 4, 5 };
-  check(vec);
+std::vector<int> vec = { 1, 2, 3, 4, 5 };
+check(vec);
 
-  auto il = { 1, 2, 3, 4, 5 };
-  check(il);
+auto il = { 1, 2, 3, 4, 5 };
+check(il);
 ```
 
 ### std::as_const(obj)
