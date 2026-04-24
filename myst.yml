@@ -1,0 +1,41 @@
+version: 1
+project:
+  title: Book title
+  authors:
+    - name: Krystian Piękoś - Infotraining
+  github: infotraining/docs-template
+  thebe:
+    binder:
+      repo: infotraining/docs-template
+      provider: github
+      url: https://mybinder.org
+      ref: master
+  bibliography:
+    - references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/book.pdf
+  toc:
+    - file: content/index
+    - file: content/stdcpp17.rst
+    - file: content/basic-features.rst
+    - file: content/core-fixes.rst
+    - file: content/templates.rst
+    - file: content/fold-expressions.rst
+    - file: content/string-view.rst
+    - file: content/any.rst
+    - file: content/variant.rst
+    - file: content/optional.rst
+    - file: content/filesystem.rst
+    - file: content/parallel-stl.rst
+    - file: content/new-library-features.rst
+site:
+  template: book-theme
+  options:
+    style: ./css/custom.css
+    logo: ./images/logo-infotraining-light.svg     # path to your logo, shown top left at site
+    logo_dark: ./images/logo-infotraining-dark.svg # path to your logo for dark mode, shown top left at site
+    favicon: ./images/favicon-infotraining.png     # path to your favicon, shown in browser tab
+    folders: false
+    hide_authors: true
